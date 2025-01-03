@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.auth.presentation.splash
+package dev.lkeeeey.edu.you.auth.splash
 
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -25,10 +25,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import dev.lkeeeey.edu.auth.presentation.splash.viewmodel.SplashState
 import dev.lkeeeey.edu.core.presentation.Theme
 import ecucateme.composeapp.generated.resources.Res
 import ecucateme.composeapp.generated.resources.logo
+import educateyou.composeapp.generated.resources.Res
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
