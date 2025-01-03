@@ -27,6 +27,8 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import dev.lkeeeey.edu.you.auth.login.LoginScreen
 import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginViewModel
+import dev.lkeeeey.edu.you.auth.register.RegisterScreen
+import dev.lkeeeey.edu.you.auth.register.viewmodel.RegisterViewModel
 import dev.lkeeeey.edu.you.auth.splash.SplashScreen
 import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
@@ -142,12 +144,12 @@ fun App(
                     ) {
 //                    Register Screen
 
-//                        val viewModel = koinViewModel<RegisterViewModel>()
-//
-//                        RegisterScreen(
-//                            viewModel = viewModel,
-//                            navController = navController
-//                        )
+                        val viewModel = koinViewModel<RegisterViewModel>()
+
+                        RegisterScreen(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
                     }
                 }
             }
