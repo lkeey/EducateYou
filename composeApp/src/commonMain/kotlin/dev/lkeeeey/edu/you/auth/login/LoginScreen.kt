@@ -1,14 +1,15 @@
-package dev.lkeeeey.edu.auth.presentation.login
+package dev.lkeeeey.edu.you.auth.login
 
 import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import dev.lkeeeey.edu.app.Route
-import dev.lkeeeey.edu.auth.presentation.login.viewmodel.LoginAction
-import dev.lkeeeey.edu.auth.presentation.login.viewmodel.LoginEvent
-import dev.lkeeeey.edu.auth.presentation.login.viewmodel.LoginViewModel
+import dev.lkeeeey.edu.auth.presentation.login.LoginView
+import dev.lkeeeey.edu.you.app.Route
+import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginAction
+import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginEvent
+import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -21,7 +22,8 @@ fun LoginScreen(
 
     when (state.event) {
         LoginEvent.OpenMain -> {
-            navController.navigate(Route.Calendar)
+//            TODO
+//            navController.navigate(Route.Calendar)
 
             viewModel.onAction(LoginAction.ClearEvents)
         }
