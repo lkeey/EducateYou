@@ -3,9 +3,6 @@ package dev.lkeeeey.edu.you.auth.splash.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.russhwolf.settings.Settings
-import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashAction
-import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashEvent
-import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.delay

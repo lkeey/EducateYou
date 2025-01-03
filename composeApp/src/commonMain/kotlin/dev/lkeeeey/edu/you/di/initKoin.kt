@@ -1,5 +1,7 @@
-package dev.lkeeeey.edu.di
+package dev.lkeeeey.edu.you.di
 
+import dev.lkeeeey.edu.you.di.platformModule
+import dev.lkeeeey.edu.you.di.sharedModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 

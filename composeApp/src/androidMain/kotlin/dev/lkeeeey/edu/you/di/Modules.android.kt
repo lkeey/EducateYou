@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.di
+package dev.lkeeeey.edu.you.di
 
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp

@@ -25,10 +25,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import dev.lkeeeey.edu.core.presentation.Theme
-import ecucateme.composeapp.generated.resources.Res
-import ecucateme.composeapp.generated.resources.logo
+import dev.lkeeeey.edu.you.core.presentation.Theme
 import educateyou.composeapp.generated.resources.Res
+import educateyou.composeapp.generated.resources.logo
 import org.jetbrains.compose.resources.painterResource
 
 @Composable

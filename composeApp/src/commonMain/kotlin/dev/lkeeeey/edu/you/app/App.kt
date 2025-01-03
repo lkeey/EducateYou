@@ -25,6 +25,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import dev.lkeeeey.edu.you.auth.splash.SplashScreen
+import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import org.koin.compose.viewmodel.koinViewModel
@@ -115,13 +117,13 @@ fun App(
                     ) {
 //                    Login Screen
 
-                        val viewModel = koinViewModel<LoginViewModel>()
-
-                        LoginScreen(
-                            viewModel = viewModel,
-                            navController = navController,
-                            scaffoldState = scaffoldState
-                        )
+//                        val viewModel = koinViewModel<LoginViewModel>()
+//
+//                        LoginScreen(
+//                            viewModel = viewModel,
+//                            navController = navController,
+//                            scaffoldState = scaffoldState
+//                        )
                     }
 
                     composable<Route.Register>(
@@ -138,12 +140,12 @@ fun App(
                     ) {
 //                    Register Screen
 
-                        val viewModel = koinViewModel<RegisterViewModel>()
-
-                        RegisterScreen(
-                            viewModel = viewModel,
-                            navController = navController
-                        )
+//                        val viewModel = koinViewModel<RegisterViewModel>()
+//
+//                        RegisterScreen(
+//                            viewModel = viewModel,
+//                            navController = navController
+//                        )
                     }
                 }
             }
