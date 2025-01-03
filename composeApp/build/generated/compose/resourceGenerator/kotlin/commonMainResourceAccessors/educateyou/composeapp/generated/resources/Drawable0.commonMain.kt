@@ -12,6 +12,12 @@ private object CommonMainDrawable0 {
   public val compose_multiplatform: DrawableResource by 
       lazy { init_compose_multiplatform() }
 
+  public val ic_authentication_closed_eye: DrawableResource by 
+      lazy { init_ic_authentication_closed_eye() }
+
+  public val ic_authentication_opened_eye: DrawableResource by 
+      lazy { init_ic_authentication_opened_eye() }
+
   public val logo: DrawableResource by 
       lazy { init_logo() }
 }
@@ -19,6 +25,8 @@ private object CommonMainDrawable0 {
 @InternalResourceApi
 internal fun _collectCommonMainDrawable0Resources(map: MutableMap<String, DrawableResource>) {
   map.put("compose_multiplatform", CommonMainDrawable0.compose_multiplatform)
+  map.put("ic_authentication_closed_eye", CommonMainDrawable0.ic_authentication_closed_eye)
+  map.put("ic_authentication_opened_eye", CommonMainDrawable0.ic_authentication_opened_eye)
   map.put("logo", CommonMainDrawable0.logo)
 }
 
@@ -31,6 +39,30 @@ private fun init_compose_multiplatform(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/educateyou.composeapp.generated.resources/drawable/compose-multiplatform.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.ic_authentication_closed_eye: DrawableResource
+  get() = CommonMainDrawable0.ic_authentication_closed_eye
+
+private fun init_ic_authentication_closed_eye(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:ic_authentication_closed_eye",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/ic_authentication_closed_eye.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.ic_authentication_opened_eye: DrawableResource
+  get() = CommonMainDrawable0.ic_authentication_opened_eye
+
+private fun init_ic_authentication_opened_eye(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:ic_authentication_opened_eye",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/ic_authentication_opened_eye.xml", -1, -1),
     )
 )
 

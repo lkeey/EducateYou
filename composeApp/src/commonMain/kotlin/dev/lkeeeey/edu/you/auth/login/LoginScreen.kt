@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import dev.lkeeeey.edu.auth.presentation.login.LoginView
 import dev.lkeeeey.edu.you.app.Route
 import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginAction
 import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginEvent

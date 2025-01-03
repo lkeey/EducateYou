@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.auth.presentation.login
+package dev.lkeeeey.edu.you.auth.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,16 +24,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.lkeeeey.edu.you.auth.components.OutlinedText
+import dev.lkeeeey.edu.you.auth.components.PasswordField
+import dev.lkeeeey.edu.you.auth.components.FilledBtn
+import dev.lkeeeey.edu.you.auth.components.FooterAuth
+import dev.lkeeeey.edu.you.auth.components.Header
 import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginAction
 import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginState
-import dev.lkeeeey.edu.core.presentation.Theme
-import dev.lkeeeey.edu.core.presentation.components.btn.FilledBtn
-import dev.lkeeeey.edu.core.presentation.components.fields.OutlinedText
-import dev.lkeeeey.edu.core.presentation.components.fields.PasswordField
-import dev.lkeeeey.edu.core.presentation.components.text.FooterAuth
-import dev.lkeeeey.edu.core.presentation.components.text.Header
-import ecucateme.composeapp.generated.resources.Res
-import ecucateme.composeapp.generated.resources.Thin
+import dev.lkeeeey.edu.you.core.presentation.Theme
+import educateyou.composeapp.generated.resources.Res
+import educateyou.composeapp.generated.resources.Thin
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.Font
 
