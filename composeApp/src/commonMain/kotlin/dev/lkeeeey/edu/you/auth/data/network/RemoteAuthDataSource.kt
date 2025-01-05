@@ -14,6 +14,7 @@ interface RemoteAuthDataSource {
     ): Result<AuthResponse, DataError.Remote>
 
     suspend fun refreshToken(
+        refresh: String,
         saveCookies: (String) -> Unit
     ): Result<AuthResponse, DataError.Remote>
 

@@ -36,7 +36,4 @@ fun SplashScreen (
             viewModel.onEvent(SplashEvent.ClearEvents)
         }
     }
-
-
-
 }

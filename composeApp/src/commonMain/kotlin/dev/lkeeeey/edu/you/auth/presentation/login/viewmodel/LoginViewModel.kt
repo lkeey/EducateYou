@@ -111,15 +111,15 @@ class LoginViewModel (
                                 .updateAuthenticated(true)
                                 .onSuccess {
 
-//                                    settings.putString(
-//                                        key = Keys.LOGIN,
-//                                        value = state.value.username
-//                                    )
-//
-//                                    settings.putString(
-//                                        key = Keys.PASSWORD,
-//                                        value = state.value.password
-//                                    )
+                                    settings.putString(
+                                        key = Keys.LOGIN,
+                                        value = state.value.username
+                                    )
+
+                                    settings.putString(
+                                        key = Keys.PASSWORD,
+                                        value = state.value.password
+                                    )
 
                                     _state.update {
                                         it.copy(

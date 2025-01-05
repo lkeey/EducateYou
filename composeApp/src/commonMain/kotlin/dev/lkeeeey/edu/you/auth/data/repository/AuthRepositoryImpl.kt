@@ -35,6 +35,26 @@ class AuthRepositoryImpl (
             .registerUser(query)
     }
 
+    override suspend fun refreshToken(refresh: String): Result<AuthResponse, DataError.Remote> {
+        return remoteAuthDataSource.loginUser(
+            query = LoginRequest(
+                username = settings.getString(
+                    key = Keys.LOGIN,
+                    defaultValue = ""
+                ),
+                password = settings.getString(
+                    key = Keys.PASSWORD,
+                    defaultValue = ""
+                ),
+            ),
+            saveCookies = {
+                updateRefreshToken(
+                    refresh = it
+                )
+            }
+        )
+    }
+
     override fun updateRefreshToken(refresh: String): Result<Unit, DataError.Local> {
         return try {
             settings.putString(

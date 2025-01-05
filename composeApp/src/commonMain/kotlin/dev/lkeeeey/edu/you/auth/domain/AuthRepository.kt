@@ -10,6 +10,7 @@ interface AuthRepository {
 
     suspend fun loginUser(query: LoginRequest): Result<AuthResponse, DataError.Remote>
     suspend fun registerUser(query: RegisterRequest): Result<Unit, DataError.Remote>
+    suspend fun refreshToken(refresh: String): Result<AuthResponse, DataError.Remote>
 
     fun updateRefreshToken(refresh: String): Result<Unit, DataError.Local>
     fun updateAccessToken(access: String): Result<Unit, DataError.Local>

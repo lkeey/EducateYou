@@ -3,6 +3,7 @@ package dev.lkeeeey.edu.you.auth.presentation.register.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.russhwolf.settings.Settings
+import dev.lkeeeey.edu.auth.data.keys.Keys
 import dev.lkeeeey.edu.auth.domain.models.RegisterRequest
 import dev.lkeeeey.edu.core.domain.onError
 import dev.lkeeeey.edu.core.domain.onSuccess
@@ -137,15 +138,15 @@ class RegisterViewModel (
                                     .updateAuthenticated(true)
                                     .onSuccess {
 
-//                                        settings.putString(
-//                                            key = Keys.LOGIN,
-//                                            value = state.value.username
-//                                        )
-//
-//                                        settings.putString(
-//                                            key = Keys.PASSWORD,
-//                                            value = state.value.password
-//                                        )
+                                        settings.putString(
+                                            key = Keys.LOGIN,
+                                            value = state.value.username
+                                        )
+
+                                        settings.putString(
+                                            key = Keys.PASSWORD,
+                                            value = state.value.password
+                                        )
 
                                         _state.update {
                                             it.copy(
