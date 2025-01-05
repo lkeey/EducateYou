@@ -33,6 +33,7 @@ import dev.lkeeeey.edu.you.auth.presentation.splash.SplashScreen
 import dev.lkeeeey.edu.you.auth.presentation.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.main.MainScreen
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -148,6 +149,19 @@ fun App(
 
                         RegisterScreen(
                             viewModel = viewModel,
+                            navController = navController
+                        )
+                    }
+                }
+
+                navigation<Route.Main>(
+                    startDestination = Route.Calendar
+                ) {
+                    composable<Route.Calendar>(
+                        exitTransition = { slideOutHorizontally() },
+                        popEnterTransition = { slideInHorizontally() }
+                    ) {
+                        MainScreen(
                             navController = navController
                         )
                     }

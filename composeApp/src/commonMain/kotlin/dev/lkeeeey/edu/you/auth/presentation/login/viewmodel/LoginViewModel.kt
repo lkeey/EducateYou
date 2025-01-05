@@ -3,13 +3,19 @@ package dev.lkeeeey.edu.you.auth.presentation.login.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.russhwolf.settings.Settings
+import dev.lkeeeey.edu.auth.data.keys.Keys
+import dev.lkeeeey.edu.core.domain.onError
+import dev.lkeeeey.edu.core.domain.onSuccess
+import dev.lkeeeey.edu.you.auth.domain.AuthRepository
+import dev.lkeeeey.edu.you.auth.domain.models.LoginRequest
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class LoginViewModel (
-//    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository
 ) : ViewModel() {
     private val settings = Settings()
 
@@ -87,24 +93,24 @@ class LoginViewModel (
         }
 
         // login
-//        viewModelScope.launch {
-//            authRepository
-//                .loginUser(
-//                    query = LoginRequest(
-//                        username = state.value.username,
-//                        password = state.value.password,
-//                    )
-//                )
-//                .onSuccess { response->
-//                    authRepository
-//                        .updateAccessToken(
-//                            access = response.access
-//                        )
-//                        .onSuccess {
-//                            authRepository
-//                                .updateAuthenticated(true)
-//                                .onSuccess {
-//
+        viewModelScope.launch {
+            authRepository
+                .loginUser(
+                    query = LoginRequest(
+                        username = state.value.username,
+                        password = state.value.password,
+                    )
+                )
+                .onSuccess { response->
+                    authRepository
+                        .updateAccessToken(
+                            access = response.access
+                        )
+                        .onSuccess {
+                            authRepository
+                                .updateAuthenticated(true)
+                                .onSuccess {
+
 //                                    settings.putString(
 //                                        key = Keys.LOGIN,
 //                                        value = state.value.username
@@ -114,42 +120,42 @@ class LoginViewModel (
 //                                        key = Keys.PASSWORD,
 //                                        value = state.value.password
 //                                    )
-//
-//                                    _state.update {
-//                                        it.copy(
-//                                            isLoading = false,
-//                                            event = LoginEvent.OpenMain
-//                                        )
-//                                    }
-//                                }
-//                                .onError { error->
-//                                    _state.update {
-//                                        it.copy(
-//                                            isLoading = false,
-//                                            isError = true,
-//                                            errorMessage = error.toStr()
-//                                        )
-//                                    }
-//                                }
-//                        }.onError { error->
-//                            _state.update {
-//                                it.copy(
-//                                    isLoading = false,
-//                                    isError = true,
-//                                    errorMessage = error.toStr()
-//                                )
-//                            }
-//                        }
-//                }
-//                .onError { error->
-//                    _state.update {
-//                        it.copy(
-//                            isLoading = false,
-//                            isError = true,
-//                            errorMessage = error.toStr()
-//                        )
-//                    }
-//                }
-//        }
+
+                                    _state.update {
+                                        it.copy(
+                                            isLoading = false,
+                                            event = LoginEvent.OpenMain
+                                        )
+                                    }
+                                }
+                                .onError { error->
+                                    _state.update {
+                                        it.copy(
+                                            isLoading = false,
+                                            isError = true,
+                                            errorMessage = error.name
+                                        )
+                                    }
+                                }
+                        }.onError { error->
+                            _state.update {
+                                it.copy(
+                                    isLoading = false,
+                                    isError = true,
+                                    errorMessage = error.name
+                                )
+                            }
+                        }
+                }
+                .onError { error->
+                    _state.update {
+                        it.copy(
+                            isLoading = false,
+                            isError = true,
+                            errorMessage = error.name
+                        )
+                    }
+                }
+        }
     }
 }

@@ -1,6 +1,6 @@
 package dev.lkeeeey.edu.you.auth.data.network
 
-import dev.lkeeeey.edu.auth.domain.models.AuthResponse
+import dev.lkeeeey.edu.you.auth.domain.models.AuthResponse
 import dev.lkeeeey.edu.auth.domain.models.RegisterRequest
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result

@@ -2,7 +2,7 @@ package dev.lkeeeey.edu.you.auth.data.repository
 
 import com.russhwolf.settings.Settings
 import dev.lkeeeey.edu.auth.data.keys.Keys
-import dev.lkeeeey.edu.auth.domain.models.AuthResponse
+import dev.lkeeeey.edu.you.auth.domain.models.AuthResponse
 import dev.lkeeeey.edu.auth.domain.models.RegisterRequest
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
