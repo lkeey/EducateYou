@@ -1,6 +1,7 @@
 package dev.lkeeeey.edu.you.auth.presentation.register.viewmodel
 
 data class RegisterState(
+    val name: String = "",
     val username: String = "",
     val password: String = "",
     val confirmedPassword: String = "",

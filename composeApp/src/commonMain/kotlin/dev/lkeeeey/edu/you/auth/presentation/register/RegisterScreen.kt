@@ -26,8 +26,7 @@ fun RegisterScreen (
             viewModel.onAction(RegisterAction.ClearEvents)
         }
         RegisterEvent.OpenMain -> {
-//            TODO
-//            navController.navigate(Route.Calendar)
+            navController.navigate(Route.Main)
 
             viewModel.onAction(RegisterAction.ClearEvents)
         }

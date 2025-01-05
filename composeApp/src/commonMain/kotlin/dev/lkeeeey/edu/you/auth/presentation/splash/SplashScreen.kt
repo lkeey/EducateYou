@@ -22,14 +22,16 @@ fun SplashScreen (
 
     when (state.action) {
         SplashAction.Nothing -> { }
+
         SplashAction.OpenLogin -> {
-            navController.navigate(Route.Login)
+            navController.navigate(Route.Login) {
+                launchSingleTop = true
+            }
 
             viewModel.onEvent(SplashEvent.ClearEvents)
         }
         SplashAction.OpenMain -> {
-//            TODO
-//            navController.navigate(Route.Main)
+            navController.navigate(Route.Main)
 
             viewModel.onEvent(SplashEvent.ClearEvents)
         }

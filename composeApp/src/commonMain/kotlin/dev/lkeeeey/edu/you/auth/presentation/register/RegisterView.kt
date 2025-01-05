@@ -77,6 +77,15 @@ fun RegisterView (
 
             Spacer(modifier = Modifier.height(12.dp))
 
+            OutlinedText(
+                previousData = "",
+                label = "Ф.И.О",
+            ) {
+                onAction(RegisterAction.OnNameChanged(it))
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             PasswordField(
                 previousData = "",
                 label = "Пароль",
