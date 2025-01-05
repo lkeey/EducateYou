@@ -1,8 +1,8 @@
 package dev.lkeeeey.edu.you.di
 
-import dev.lkeeeey.edu.you.auth.login.viewmodel.LoginViewModel
-import dev.lkeeeey.edu.you.auth.register.viewmodel.RegisterViewModel
-import dev.lkeeeey.edu.you.auth.splash.viewmodel.SplashViewModel
+import dev.lkeeeey.edu.you.auth.presentation.login.viewmodel.LoginViewModel
+import dev.lkeeeey.edu.you.auth.presentation.register.viewmodel.RegisterViewModel
+import dev.lkeeeey.edu.you.auth.presentation.splash.viewmodel.SplashViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
