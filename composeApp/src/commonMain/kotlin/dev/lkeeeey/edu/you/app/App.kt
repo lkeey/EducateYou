@@ -34,6 +34,7 @@ import dev.lkeeeey.edu.you.auth.presentation.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.main.MainScreen
+import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -161,7 +162,11 @@ fun App(
                         exitTransition = { slideOutHorizontally() },
                         popEnterTransition = { slideInHorizontally() }
                     ) {
+//                        Main Screen
+                        val viewModel = koinViewModel<CalendarViewModel>()
+
                         MainScreen(
+                            viewModel = viewModel,
                             navController = navController
                         )
                     }

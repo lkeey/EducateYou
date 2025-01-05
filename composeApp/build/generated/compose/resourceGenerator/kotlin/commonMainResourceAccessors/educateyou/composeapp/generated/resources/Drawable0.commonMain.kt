@@ -18,8 +18,14 @@ private object CommonMainDrawable0 {
   public val ic_authentication_opened_eye: DrawableResource by 
       lazy { init_ic_authentication_opened_eye() }
 
+  public val ic_calendar_no_plans: DrawableResource by 
+      lazy { init_ic_calendar_no_plans() }
+
   public val logo: DrawableResource by 
       lazy { init_logo() }
+
+  public val profile: DrawableResource by 
+      lazy { init_profile() }
 }
 
 @InternalResourceApi
@@ -27,7 +33,9 @@ internal fun _collectCommonMainDrawable0Resources(map: MutableMap<String, Drawab
   map.put("compose_multiplatform", CommonMainDrawable0.compose_multiplatform)
   map.put("ic_authentication_closed_eye", CommonMainDrawable0.ic_authentication_closed_eye)
   map.put("ic_authentication_opened_eye", CommonMainDrawable0.ic_authentication_opened_eye)
+  map.put("ic_calendar_no_plans", CommonMainDrawable0.ic_calendar_no_plans)
   map.put("logo", CommonMainDrawable0.logo)
+  map.put("profile", CommonMainDrawable0.profile)
 }
 
 internal val Res.drawable.compose_multiplatform: DrawableResource
@@ -66,6 +74,18 @@ private fun init_ic_authentication_opened_eye(): DrawableResource =
     )
 )
 
+internal val Res.drawable.ic_calendar_no_plans: DrawableResource
+  get() = CommonMainDrawable0.ic_calendar_no_plans
+
+private fun init_ic_calendar_no_plans(): DrawableResource =
+    org.jetbrains.compose.resources.DrawableResource(
+  "drawable:ic_calendar_no_plans",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/ic_calendar_no_plans.xml", -1, -1),
+    )
+)
+
 internal val Res.drawable.logo: DrawableResource
   get() = CommonMainDrawable0.logo
 
@@ -74,5 +94,16 @@ private fun init_logo(): DrawableResource = org.jetbrains.compose.resources.Draw
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/educateyou.composeapp.generated.resources/drawable/logo.png", -1, -1),
+    )
+)
+
+internal val Res.drawable.profile: DrawableResource
+  get() = CommonMainDrawable0.profile
+
+private fun init_profile(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:profile",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/profile.png", -1, -1),
     )
 )
