@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.main.presentation.calendar.components
+package dev.lkeeeey.edu.you.main.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

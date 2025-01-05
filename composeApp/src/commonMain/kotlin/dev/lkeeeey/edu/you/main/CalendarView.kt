@@ -29,7 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import dev.lkeeeey.edu.main.presentation.calendar.components.ImageWithText
+import dev.lkeeeey.edu.you.main.components.ImageWithText
 import dev.lkeeeey.edu.you.main.components.MonthText
 import dev.lkeeeey.edu.main.presentation.calendar.components.MonthViewCalendar
 import dev.lkeeeey.edu.you.core.presentation.Theme

@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.lkeeeey.edu.you.main.components.DayView
 import kotlinx.datetime.LocalDate
 
 @OptIn(ExperimentalLayoutApi::class)
