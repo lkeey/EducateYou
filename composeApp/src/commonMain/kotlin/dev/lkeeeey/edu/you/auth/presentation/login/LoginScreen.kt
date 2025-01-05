@@ -21,8 +21,7 @@ fun LoginScreen(
 
     when (state.event) {
         LoginEvent.OpenMain -> {
-//            TODO
-//            navController.navigate(Route.Calendar)
+            navController.navigate(Route.Main)
 
             viewModel.onAction(LoginAction.ClearEvents)
         }
