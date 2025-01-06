@@ -16,13 +16,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import dev.lkeeeey.edu.you.auth.presentation.login.LoginScreen
@@ -35,8 +33,8 @@ import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.main.MainScreen
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
-import dev.lkeeeey.edu.you.profile.ProfileScreen
-import dev.lkeeeey.edu.you.profile.viewmodel.ProfileViewModel
+import dev.lkeeeey.edu.you.profile.tabs.ProfileScreen
+import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -45,9 +43,6 @@ fun App(
 ) {
     EduYouTheme {
         val navController = rememberNavController()
-
-        val backStackEntry by navController.currentBackStackEntryAsState()
-        val currentScreen = backStackEntry?.destination
 
         val scaffoldState = rememberScaffoldState()
 
