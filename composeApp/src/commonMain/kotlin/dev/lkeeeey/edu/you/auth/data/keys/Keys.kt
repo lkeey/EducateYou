@@ -9,5 +9,5 @@ object Keys {
 
     const val IS_LOGIN = "IS_LOGIN"
 
-    const val SELECTED_TEACHER = "SELECTED_TEACHER"
+    const val SELECTED_STUDENT = "SELECTED_STUDENT"
 }

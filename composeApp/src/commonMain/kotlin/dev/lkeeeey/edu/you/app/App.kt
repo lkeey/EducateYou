@@ -18,7 +18,11 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.BlendMode.Companion.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
@@ -35,6 +39,9 @@ import dev.lkeeeey.edu.you.main.MainScreen
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
 import dev.lkeeeey.edu.you.profile.tabs.ProfileScreen
 import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileViewModel
+import educateyou.composeapp.generated.resources.Res
+import educateyou.composeapp.generated.resources.ic_profile_btn_back
+import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -50,20 +57,24 @@ fun App(
             topBar = {
                 if (isShowTopBar) {
                     TopAppBar(
+                        modifier = Modifier
+                            .padding(horizontal = 32.dp),
                         title = {  },
                         navigationIcon = {
                             Icon(
-                                tint = White,
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "add",
                                 modifier = Modifier
+                                    .rotate(180f)
                                     .clip(CircleShape)
                                     .clickable {
                                         navController.popBackStack()
-                                    }
+                                    },
+                                tint = White,
+                                painter = painterResource(Res.drawable.ic_profile_btn_back),
+                                contentDescription = "add",
+
                             )
                         },
-                        backgroundColor = Theme.colors.primaryBackground.copy(1f)
+                        backgroundColor = Theme.colors.backgroundMain.copy(1f)
                     )
                 }
             },

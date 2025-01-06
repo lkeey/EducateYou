@@ -20,6 +20,14 @@ class StudentsViewModel (
 
     private val settings = Settings()
 
+    fun onEvent(
+        event: StudentsEvent
+    ) {
+        when (event) {
+            StudentsEvent.OnStudentClick -> {
 
+            }
+        }
+    }
 
 }
