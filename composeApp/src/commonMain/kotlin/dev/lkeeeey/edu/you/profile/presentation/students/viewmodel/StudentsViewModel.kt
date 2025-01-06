@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.you.profile.students.viewmodel
+package dev.lkeeeey.edu.you.profile.presentation.students.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,7 +27,15 @@ class StudentsViewModel (
             StudentsEvent.OnStudentClick -> {
 
             }
+
+            StudentsEvent.OnLoadStudents -> {
+                loadStudents()
+            }
         }
+    }
+
+    private fun loadStudents() {
+
     }
 
 }

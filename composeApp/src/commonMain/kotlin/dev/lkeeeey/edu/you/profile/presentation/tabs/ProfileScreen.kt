@@ -1,12 +1,12 @@
-package dev.lkeeeey.edu.you.profile.tabs
+package dev.lkeeeey.edu.you.profile.presentation.tabs
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import dev.lkeeeey.edu.you.app.Route
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileAction
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileViewModel
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileAction
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable

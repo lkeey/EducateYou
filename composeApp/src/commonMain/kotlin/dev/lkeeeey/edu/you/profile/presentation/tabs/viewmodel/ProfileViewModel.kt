@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.you.profile.tabs.viewmodel
+package dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

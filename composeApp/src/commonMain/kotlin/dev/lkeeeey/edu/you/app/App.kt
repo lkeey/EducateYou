@@ -12,15 +12,11 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Snackbar
 import androidx.compose.material.SnackbarHost
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.BlendMode.Companion.Color
-import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -37,8 +33,10 @@ import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.main.MainScreen
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
-import dev.lkeeeey.edu.you.profile.tabs.ProfileScreen
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileViewModel
+import dev.lkeeeey.edu.you.profile.presentation.students.StudentsScreen
+import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
+import dev.lkeeeey.edu.you.profile.presentation.tabs.ProfileScreen
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.ic_profile_btn_back
 import org.jetbrains.compose.resources.painterResource
@@ -196,7 +194,21 @@ fun App(
                         )
                     }
 
-                    // TODO students
+
+                    composable<Route.Students>(
+                        exitTransition = { slideOutHorizontally() },
+                        popEnterTransition = { slideInHorizontally() }
+                    ) {
+//                        Students Screen
+                        val viewModel = koinViewModel<StudentsViewModel>()
+
+                        StudentsScreen(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    }
+
+                    // TODO students detail
                 }
             }
         }

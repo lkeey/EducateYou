@@ -1,4 +1,4 @@
-package dev.lkeeeey.edu.you.profile.tabs
+package dev.lkeeeey.edu.you.profile.presentation.tabs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,10 +26,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.lkeeeey.edu.you.core.presentation.Theme
-import dev.lkeeeey.edu.you.profile.components.Reference
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileAction
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileEvent
-import dev.lkeeeey.edu.you.profile.tabs.viewmodel.ProfileState
+import dev.lkeeeey.edu.you.profile.presentation.components.Reference
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileAction
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileEvent
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileState
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.Thin
 import educateyou.composeapp.generated.resources.ic_profile_logout
