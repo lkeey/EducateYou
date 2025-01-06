@@ -9,6 +9,7 @@ import dev.lkeeeey.edu.you.auth.presentation.login.viewmodel.LoginViewModel
 import dev.lkeeeey.edu.you.auth.presentation.register.viewmodel.RegisterViewModel
 import dev.lkeeeey.edu.you.auth.presentation.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
+import dev.lkeeeey.edu.you.profile.viewmodel.ProfileViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -22,6 +23,7 @@ val sharedModule = module {
     viewModelOf(::LoginViewModel)
     viewModelOf(::RegisterViewModel)
     viewModelOf(::CalendarViewModel)
+    viewModelOf(::ProfileViewModel)
 
     single { HttpClientFactory.create(get()) }
 
