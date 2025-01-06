@@ -18,6 +18,9 @@ private object CommonMainDrawable0 {
   public val ic_authentication_opened_eye: DrawableResource by 
       lazy { init_ic_authentication_opened_eye() }
 
+  public val ic_btn_back: DrawableResource by 
+      lazy { init_ic_btn_back() }
+
   public val ic_calendar_no_plans: DrawableResource by 
       lazy { init_ic_calendar_no_plans() }
 
@@ -45,6 +48,7 @@ internal fun _collectCommonMainDrawable0Resources(map: MutableMap<String, Drawab
   map.put("compose_multiplatform", CommonMainDrawable0.compose_multiplatform)
   map.put("ic_authentication_closed_eye", CommonMainDrawable0.ic_authentication_closed_eye)
   map.put("ic_authentication_opened_eye", CommonMainDrawable0.ic_authentication_opened_eye)
+  map.put("ic_btn_back", CommonMainDrawable0.ic_btn_back)
   map.put("ic_calendar_no_plans", CommonMainDrawable0.ic_calendar_no_plans)
   map.put("ic_profile_btn_back", CommonMainDrawable0.ic_profile_btn_back)
   map.put("ic_profile_logout", CommonMainDrawable0.ic_profile_logout)
@@ -87,6 +91,17 @@ private fun init_ic_authentication_opened_eye(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/educateyou.composeapp.generated.resources/drawable/ic_authentication_opened_eye.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.ic_btn_back: DrawableResource
+  get() = CommonMainDrawable0.ic_btn_back
+
+private fun init_ic_btn_back(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:ic_btn_back",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/ic_btn_back.xml", -1, -1),
     )
 )
 

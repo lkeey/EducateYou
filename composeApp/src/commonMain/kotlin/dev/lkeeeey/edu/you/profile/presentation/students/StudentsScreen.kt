@@ -1,10 +1,12 @@
 package dev.lkeeeey.edu.you.profile.presentation.students
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsAction
+import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsEvent
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -25,7 +27,15 @@ fun StudentsScreen(
                 StudentsAction.OnOpenStudentDetails -> {
                     // TODO navigate
                 }
+
+                StudentsAction.OnBackScreen -> {
+                    navController.popBackStack()
+                }
             }
         }
     )
+
+    LaunchedEffect(true) {
+        viewModel.onEvent(StudentsEvent.OnLoadStudents)
+    }
 }

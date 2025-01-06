@@ -17,11 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,10 +25,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import dev.lkeeeey.edu.you.main.components.ImageWithText
-import dev.lkeeeey.edu.you.main.components.MonthText
 import dev.lkeeeey.edu.main.presentation.calendar.components.MonthViewCalendar
 import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.main.components.ImageWithText
+import dev.lkeeeey.edu.you.main.components.MonthText
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarAction
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarEvent
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarState
@@ -62,8 +58,8 @@ fun CalendarView (
                 .animateContentSize()
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding)
-                .padding(16.dp)
-
+                .padding(top = 24.dp)
+                .padding(horizontal = 16.dp)
         ) {
             Spacer(modifier = Modifier.height(12.dp))
 

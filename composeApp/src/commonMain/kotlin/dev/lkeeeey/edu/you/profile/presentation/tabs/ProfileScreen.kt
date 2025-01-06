@@ -27,8 +27,11 @@ fun ProfileScreen(
                     navController.navigate(Route.Login)
                 }
                 ProfileAction.OnOpenStudents -> {
-//                    TODO
-//                    navController.navigate(Route.Auth)
+                    navController.navigate(Route.Students)
+                }
+
+                ProfileAction.OnBackScreen -> {
+                    navController.popBackStack()
                 }
             }
         }

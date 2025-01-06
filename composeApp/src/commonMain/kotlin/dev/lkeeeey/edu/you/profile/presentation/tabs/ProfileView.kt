@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -27,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.components.Reference
+import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
+import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsAction
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileAction
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileEvent
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileState
@@ -48,15 +49,9 @@ fun ProfileView(
         modifier = Modifier
             .fillMaxSize()
     ) {
-
-        Spacer(
-            Modifier.height(12.dp)
-        )
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight()
                 .background(
                     color = White, shape = RoundedCornerShape(
                         topStart = 0.dp, topEnd = 0.dp, bottomEnd = 40.dp, bottomStart = 40.dp
@@ -65,10 +60,15 @@ fun ProfileView(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            BackBtn(
+                text = "",
+                onClick = {
+                    onOpenScreen(ProfileAction.OnBackScreen)
+                }
+            )
 
             Image(
                 modifier = Modifier
-                    .padding(top = 8.dp)
                     .size(95.dp)
                     .align(Alignment.CenterHorizontally)
                     .clip(CircleShape),
