@@ -9,6 +9,10 @@ import dev.lkeeeey.edu.you.auth.presentation.login.viewmodel.LoginViewModel
 import dev.lkeeeey.edu.you.auth.presentation.register.viewmodel.RegisterViewModel
 import dev.lkeeeey.edu.you.auth.presentation.splash.viewmodel.SplashViewModel
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
+import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
+import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSourceImpl
+import dev.lkeeeey.edu.you.profile.data.repository.ProfileRepositoryImpl
+import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
 import org.koin.core.module.Module
@@ -31,4 +35,7 @@ val sharedModule = module {
 
     singleOf(::AuthDataSource).bind<RemoteAuthDataSource>()
     singleOf(::AuthRepositoryImpl).bind<AuthRepository>()
+
+    singleOf(::ProfileDataSourceImpl).bind<ProfileDataSource>()
+    singleOf(::ProfileRepositoryImpl).bind<ProfileRepository>()
 }
