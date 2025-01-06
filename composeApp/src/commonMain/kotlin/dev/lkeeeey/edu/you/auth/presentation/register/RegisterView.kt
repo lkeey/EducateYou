@@ -27,6 +27,7 @@ import dev.lkeeeey.edu.you.auth.presentation.components.Header
 import dev.lkeeeey.edu.you.auth.presentation.components.OutlinedText
 import dev.lkeeeey.edu.you.auth.presentation.components.PasswordField
 import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.profile.presentation.components.ErrorMessage
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.Thin
 import org.jetbrains.compose.resources.Font
@@ -56,16 +57,7 @@ fun RegisterView (
             )
 
             if (state.isError) {
-                Text(
-                    text = "Пользователь с таким именем уже зарегистрирован",
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(Res.font.Thin)),
-                        fontWeight = FontWeight(400),
-                        color = Theme.colors.errorColor,
-                        textAlign = TextAlign.Center
-                    )
-                )
+                ErrorMessage("Пользователь с таким именем уже зарегистрирован")
             }
 
             OutlinedText(

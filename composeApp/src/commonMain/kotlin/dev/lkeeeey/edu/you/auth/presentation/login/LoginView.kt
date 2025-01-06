@@ -32,6 +32,7 @@ import dev.lkeeeey.edu.you.auth.presentation.components.Header
 import dev.lkeeeey.edu.you.auth.presentation.login.viewmodel.LoginAction
 import dev.lkeeeey.edu.you.auth.presentation.login.viewmodel.LoginState
 import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.profile.presentation.components.ErrorMessage
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.Thin
 import kotlinx.coroutines.launch
@@ -67,16 +68,7 @@ fun LoginView(
             )
 
             if (state.isError) {
-                Text(
-                    text = state.errorMessage,
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(Res.font.Thin)),
-                        fontWeight = FontWeight(400),
-                        color = Theme.colors.errorColor,
-                        textAlign = TextAlign.Center
-                    )
-                )
+                ErrorMessage(state.errorMessage)
             }
 
             OutlinedText(

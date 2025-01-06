@@ -35,7 +35,7 @@ class AuthRepositoryImpl (
             .registerUser(query)
     }
 
-    override suspend fun refreshToken(refresh: String): Result<AuthResponse, DataError.Remote> {
+    override suspend fun refreshToken(): Result<AuthResponse, DataError.Remote> {
         return remoteAuthDataSource.loginUser(
             query = LoginRequest(
                 username = settings.getString(

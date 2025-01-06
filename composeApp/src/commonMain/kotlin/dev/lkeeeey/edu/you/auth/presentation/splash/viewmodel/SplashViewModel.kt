@@ -61,9 +61,7 @@ class SplashViewModel (
                     )
                 }
             } else {
-                authRepository.refreshToken(
-                    refresh = refresh
-                )
+                authRepository.refreshToken()
                     .onSuccess { response ->
 
                         authRepository
