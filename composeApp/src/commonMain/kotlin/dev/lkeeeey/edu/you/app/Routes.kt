@@ -25,4 +25,13 @@ sealed interface Route {
     data object Calendar : Route
     // end main routes
 
+    @Serializable
+    data object Profile : Route
+    //    profile routes
+    @Serializable
+    data object ProfileTabs : Route
+    @Serializable
+    data object Students : Route
+    //    end profile routes
+
 }

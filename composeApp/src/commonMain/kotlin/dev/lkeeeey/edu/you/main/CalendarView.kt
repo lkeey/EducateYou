@@ -96,7 +96,7 @@ fun CalendarView (
                             .height(50.dp)
                             .width(50.dp)
                             .clickable {
-//                                onOpen(CalendarAction.OnOpenProfile)
+                                onOpen(CalendarAction.OnOpenProfile)
                             },
                         painter = painterResource(Res.drawable.profile),
                         contentDescription = "profile img",

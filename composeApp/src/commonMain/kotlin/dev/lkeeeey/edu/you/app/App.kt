@@ -35,6 +35,8 @@ import dev.lkeeeey.edu.you.core.presentation.EduYouTheme
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.main.MainScreen
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
+import dev.lkeeeey.edu.you.profile.ProfileScreen
+import dev.lkeeeey.edu.you.profile.viewmodel.ProfileViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -170,6 +172,25 @@ fun App(
                             navController = navController
                         )
                     }
+                }
+
+                navigation<Route.Profile>(
+                    startDestination = Route.ProfileTabs
+                ) {
+                    composable<Route.ProfileTabs>(
+                        exitTransition = { slideOutHorizontally() },
+                        popEnterTransition = { slideInHorizontally() }
+                    ) {
+//                        Profile Tabs Screen
+                        val viewModel = koinViewModel<ProfileViewModel>()
+
+                        ProfileScreen(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    }
+
+                    // TODO students
                 }
             }
         }

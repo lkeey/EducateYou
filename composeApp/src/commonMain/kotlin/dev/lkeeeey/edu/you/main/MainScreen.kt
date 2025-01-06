@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import dev.lkeeeey.edu.you.app.Route
+import dev.lkeeeey.edu.you.main.viewmodel.CalendarAction
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -20,7 +22,11 @@ fun MainScreen (
             viewModel.onEvent(event)
         },
         onOpen = {
-
+            when (it) {
+                CalendarAction.OnOpenProfile -> {
+                    navController.navigate(Route.Profile)
+                }
+            }
         }
     )
 }
