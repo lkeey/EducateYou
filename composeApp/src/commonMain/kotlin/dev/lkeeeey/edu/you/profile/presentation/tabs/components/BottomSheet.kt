@@ -12,12 +12,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Done
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.runtime.Composable
@@ -28,12 +27,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import dev.lkeeeey.edu.you.auth.presentation.components.OutlinedText
+import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileEvent
+import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomSheet (
+    state: ProfileState,
     isBottomSheetVisible: Boolean,
     sheetState: SheetState,
+    onEvent: (ProfileEvent) -> Unit,
     onDismiss: () -> Unit
 ) {
     if (isBottomSheetVisible) {
@@ -42,7 +46,6 @@ fun BottomSheet (
             onDismissRequest = onDismiss,
             sheetState = sheetState,
             containerColor = Color.Transparent,
-            contentColor = MaterialTheme.colorScheme.onSurface,
             shape = RectangleShape,
             dragHandle = null,
             scrimColor = Color.Black.copy(alpha = .5f),
@@ -55,22 +58,18 @@ fun BottomSheet (
                     .padding(8.dp),
                 contentAlignment = Alignment.Center
             ) {
-
                 FilledIconButton(
                     modifier = Modifier.size(48.dp),
                     onClick = onDismiss,
                     colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = MaterialTheme.colorScheme.background
+                        containerColor = Theme.colors.backgroundMain
                     )
                 ) {
-
                     Icon(
-                        imageVector = Icons.Rounded.Close,
+                        imageVector = Icons.Rounded.Done,
                         contentDescription = "Hide the dialog."
                     )
-
                 }
-
             }
 
             Column(
@@ -78,7 +77,7 @@ fun BottomSheet (
                     .navigationBarsPadding()
                     .padding(12.dp) // Outer padding
                     .clip(shape = RoundedCornerShape(24.dp))
-                    .background(color = MaterialTheme.colorScheme.background)
+                    .background(color = Theme.colors.backgroundMain)
                     .fillMaxWidth()
                     .padding(24.dp) // Inner padding
             ) {
@@ -86,22 +85,22 @@ fun BottomSheet (
                 Spacer(modifier = Modifier.height(16.dp))
 
                 OutlinedText(
-                    previousData = "",
+                    previousData = state.profile.bio,
                     label = "Bio",
                 ) {
-//                    onAction(LoginAction.OnUsernameChanged(it))
+                    onEvent(ProfileEvent.OnBioUpdated(it))
                 }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
                 OutlinedText(
-                    previousData = "",
-                    label = "Subject",
+                    previousData = state.profile.profileLogoUrl,
+                    label = "Предмет",
                 ) {
-//                    onAction(LoginAction.OnUsernameChanged(it))
+                    onEvent(ProfileEvent.OnSubjectUpdated(it))
                 }
 
-                Spacer(modifier = Modifier.height(48.dp))
+                Spacer(modifier = Modifier.height(24.dp))
 
             }
         }

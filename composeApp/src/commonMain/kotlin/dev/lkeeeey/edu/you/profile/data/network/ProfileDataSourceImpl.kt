@@ -5,10 +5,11 @@ import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
+import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
-import io.ktor.client.request.post
+import io.ktor.client.request.patch
 import io.ktor.client.request.setBody
 
 private const val BASE_URL = "https://me-educate.ru/api"
@@ -44,4 +45,21 @@ class ProfileDataSourceImpl (
         }
     }
 
+    override suspend fun updateTeacherBio(
+        access: String,
+        bio: UpdateBioModel
+    ): Result<Unit, DataError.Remote> {
+        return safeCall<Unit> {
+            httpClient.patch(
+                urlString = "$BASE_URL/auth/bio"
+            ) {
+                setBody(
+                    bio
+                )
+                bearerAuth(
+                    access
+                )
+            }
+        }
+    }
 }

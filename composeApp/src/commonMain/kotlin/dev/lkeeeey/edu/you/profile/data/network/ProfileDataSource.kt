@@ -4,6 +4,7 @@ import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
+import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 
 interface ProfileDataSource {
     suspend fun getStudents(
@@ -14,4 +15,9 @@ interface ProfileDataSource {
         access: String,
         username: String
     ) : Result<ProfileModel, DataError.Remote>
+
+    suspend fun updateTeacherBio(
+        access: String,
+        bio: UpdateBioModel
+    ) : Result<Unit, DataError.Remote>
 }

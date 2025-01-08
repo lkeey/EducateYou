@@ -58,6 +58,12 @@ class ProfileViewModel (
                     )
                 }
             }
+
+            ProfileEvent.OnSave -> {
+//                TODO save bio
+
+//                TODO save subject
+            }
         }
     }
 

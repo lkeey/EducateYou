@@ -8,6 +8,7 @@ import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
+import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 
 class ProfileRepositoryImpl(
     private val profileDataSource: ProfileDataSource
@@ -23,6 +24,13 @@ class ProfileRepositoryImpl(
 
     override suspend fun getTeacherProfile(): Result<ProfileModel, DataError.Remote> {
 //        TODO
+        return profileDataSource.getTeacherProfile(
+            access = getAccess(),
+            username = "lkey_teacher"
+        )
+    }
+
+    override suspend fun updateTeacherBio(bio: UpdateBioModel): Result<Unit, DataError.Remote> {
         return profileDataSource.getTeacherProfile(
             access = getAccess(),
             username = "lkey_teacher"

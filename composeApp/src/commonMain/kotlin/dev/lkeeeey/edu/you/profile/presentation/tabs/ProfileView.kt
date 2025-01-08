@@ -24,12 +24,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.lkeeeey.edu.you.core.presentation.Theme
@@ -64,6 +66,7 @@ fun ProfileView(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .blur(if (state.isLoading) 4.dp else 0.dp),
     ) {
         Column(
             modifier = Modifier
@@ -98,6 +101,7 @@ fun ProfileView(
 
             Column (
                 modifier = Modifier
+                    .clip(RoundedCornerShape(12.dp))
                     .clickable {
                         scope.launch {
                             isBottomSheetVisible = true
@@ -106,12 +110,15 @@ fun ProfileView(
                     }
             ) {
                 Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     text = state.profile.name, style = TextStyle(
                         fontSize = 17.sp,
                         fontFamily = FontFamily(org.jetbrains.compose.resources.Font(Res.font.Thin)),
                         fontWeight = FontWeight(600),
                         color = Theme.colors.blackProfile,
                         letterSpacing = 0.4.sp,
+                        textAlign = TextAlign.Center
                     )
                 )
 
@@ -120,12 +127,15 @@ fun ProfileView(
                 )
 
                 Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     text = "Учитель", style = TextStyle(
                         fontSize = 12.sp,
                         fontFamily = FontFamily(org.jetbrains.compose.resources.Font(Res.font.Thin)),
                         fontWeight = FontWeight(600),
                         color = Theme.colors.greyDescription,
                         letterSpacing = 0.4.sp,
+                        textAlign = TextAlign.Center
                     )
                 )
 
@@ -179,9 +189,13 @@ fun ProfileView(
     }
 
     BottomSheet(
+        state = state,
         isBottomSheetVisible = isBottomSheetVisible,
         sheetState = sheetState,
+        onEvent = onEvent,
         onDismiss = {
+            onEvent(ProfileEvent.OnSave)
+
             scope.launch { sheetState.hide() }
                 .invokeOnCompletion { isBottomSheetVisible = false }
         }
