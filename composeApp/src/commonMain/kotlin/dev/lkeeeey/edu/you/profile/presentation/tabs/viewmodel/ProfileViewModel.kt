@@ -43,6 +43,21 @@ class ProfileViewModel (
             ProfileEvent.OnOpenProfile -> {
                 loadProfile()
             }
+
+            is ProfileEvent.OnBioUpdated -> {
+                _state.update {
+                    it.copy(
+                        enteredBio = event.bio
+                    )
+                }
+            }
+            is ProfileEvent.OnSubjectUpdated -> {
+                _state.update {
+                    it.copy(
+                        enteredSubject = event.subject
+                    )
+                }
+            }
         }
     }
 

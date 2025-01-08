@@ -5,5 +5,7 @@ import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 data class ProfileState (
     val isLoading : Boolean = false,
     val errorMessage : String = "",
+    val enteredBio : String = "",
+    val enteredSubject : String = "",
     val profile : ProfileModel = ProfileModel("Loading", "Loading", "Loading", "Loading")
 )

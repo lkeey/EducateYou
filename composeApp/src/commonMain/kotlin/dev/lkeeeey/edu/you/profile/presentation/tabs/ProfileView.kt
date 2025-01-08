@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.components.Reference
 import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
+import dev.lkeeeey.edu.you.profile.presentation.tabs.components.BottomSheet
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileAction
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileEvent
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileState
@@ -176,4 +177,13 @@ fun ProfileView(
             }
         }
     }
+
+    BottomSheet(
+        isBottomSheetVisible = isBottomSheetVisible,
+        sheetState = sheetState,
+        onDismiss = {
+            scope.launch { sheetState.hide() }
+                .invokeOnCompletion { isBottomSheetVisible = false }
+        }
+    )
 }
