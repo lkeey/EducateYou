@@ -24,6 +24,8 @@ fun ErrorMessage (
             .fillMaxWidth()
     ) {
         Text(
+            modifier = Modifier
+                .fillMaxWidth(),
             text = text,
             style = TextStyle(
                 fontSize = 16.sp,
@@ -31,7 +33,7 @@ fun ErrorMessage (
                 fontWeight = FontWeight(400),
                 color = Theme.colors.errorColor,
                 textAlign = TextAlign.Center
-            )
+            ),
         )
     }
 

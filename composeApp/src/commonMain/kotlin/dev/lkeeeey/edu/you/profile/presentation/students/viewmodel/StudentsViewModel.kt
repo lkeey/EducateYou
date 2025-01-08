@@ -2,7 +2,6 @@ package dev.lkeeeey.edu.you.profile.presentation.students.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.russhwolf.settings.Settings
 import dev.lkeeeey.edu.core.domain.onError
 import dev.lkeeeey.edu.core.domain.onSuccess
 import dev.lkeeeey.edu.you.auth.domain.AuthRepository
@@ -24,8 +23,6 @@ class StudentsViewModel (
         SharingStarted.WhileSubscribed(5000L),
         _state.value
     )
-
-    private val settings = Settings()
 
     fun onEvent(
         event: StudentsEvent
@@ -65,7 +62,8 @@ class StudentsViewModel (
                         .onError { error ->
                             _state.update {
                                 it.copy(
-                                    errorMessage = error.name
+                                    errorMessage = error.name,
+                                    isLoading = false
                                 )
                             }
                         }
@@ -73,7 +71,8 @@ class StudentsViewModel (
                 .onError { error ->
                     _state.update {
                         it.copy(
-                            errorMessage = error.name
+                            errorMessage = error.name,
+                            isLoading = false
                         )
                     }
                 }

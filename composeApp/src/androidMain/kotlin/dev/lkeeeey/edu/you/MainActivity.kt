@@ -18,9 +18,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            App(
-                isShowTopBar = false
-            )
+            App()
         }
     }
 }

@@ -61,10 +61,11 @@ fun ProfileView(
             verticalArrangement = Arrangement.Center
         ) {
             BackBtn(
-                text = "",
+                text = "Profile",
                 onClick = {
                     onOpenScreen(ProfileAction.OnBackScreen)
-                }
+                },
+                containerColor = White
             )
 
             Image(

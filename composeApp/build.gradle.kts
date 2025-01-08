@@ -66,6 +66,9 @@ kotlin {
 
             implementation(libs.multiplatform.settings)
             implementation(libs.multiplatform.settings.no.arg)
+
+            // toolbar only with material3
+            implementation(compose.material3)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

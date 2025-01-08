@@ -2,23 +2,15 @@ package dev.lkeeeey.edu.you.app
 
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Snackbar
 import androidx.compose.material.SnackbarHost
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
@@ -37,45 +29,16 @@ import dev.lkeeeey.edu.you.profile.presentation.students.StudentsScreen
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
 import dev.lkeeeey.edu.you.profile.presentation.tabs.ProfileScreen
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
-import educateyou.composeapp.generated.resources.Res
-import educateyou.composeapp.generated.resources.ic_profile_btn_back
-import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun App(
-    isShowTopBar: Boolean = true,
-) {
+fun App() {
     EduYouTheme {
         val navController = rememberNavController()
 
         val scaffoldState = rememberScaffoldState()
 
         Scaffold(
-            topBar = {
-                if (isShowTopBar) {
-                    TopAppBar(
-                        modifier = Modifier
-                            .padding(horizontal = 32.dp),
-                        title = {  },
-                        navigationIcon = {
-                            Icon(
-                                modifier = Modifier
-                                    .rotate(180f)
-                                    .clip(CircleShape)
-                                    .clickable {
-                                        navController.popBackStack()
-                                    },
-                                tint = White,
-                                painter = painterResource(Res.drawable.ic_profile_btn_back),
-                                contentDescription = "add",
-
-                            )
-                        },
-                        backgroundColor = Theme.colors.backgroundMain.copy(1f)
-                    )
-                }
-            },
             bottomBar = { },
             snackbarHost = {
                 SnackbarHost(it) { data ->
