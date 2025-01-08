@@ -60,7 +60,11 @@ fun BottomSheet (
             ) {
                 FilledIconButton(
                     modifier = Modifier.size(48.dp),
-                    onClick = onDismiss,
+                    onClick = {
+                        onEvent(ProfileEvent.OnSave)
+
+                        onDismiss()
+                    },
                     colors = IconButtonDefaults.filledIconButtonColors(
                         containerColor = Theme.colors.backgroundMain
                     )

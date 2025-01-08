@@ -6,6 +6,7 @@ object Keys {
 
     const val LOGIN = "LOGIN"
     const val PASSWORD = "PASSWORD"
+    const val MY_USERNAME = "MY_USERNAME"
 
     const val IS_LOGIN = "IS_LOGIN"
 

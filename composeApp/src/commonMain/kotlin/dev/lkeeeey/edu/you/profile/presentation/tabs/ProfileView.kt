@@ -35,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.lkeeeey.edu.you.core.presentation.Theme
+import dev.lkeeeey.edu.you.profile.presentation.components.ErrorMessage
 import dev.lkeeeey.edu.you.profile.presentation.components.Reference
 import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
 import dev.lkeeeey.edu.you.profile.presentation.tabs.components.BottomSheet
@@ -86,6 +87,10 @@ fun ProfileView(
                 },
                 containerColor = White
             )
+
+            if (state.errorMessage.isNotEmpty()) {
+                ErrorMessage(state.errorMessage)
+            }
 
             Image(
                 modifier = Modifier
@@ -194,8 +199,6 @@ fun ProfileView(
         sheetState = sheetState,
         onEvent = onEvent,
         onDismiss = {
-            onEvent(ProfileEvent.OnSave)
-
             scope.launch { sheetState.hide() }
                 .invokeOnCompletion { isBottomSheetVisible = false }
         }

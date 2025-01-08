@@ -23,23 +23,29 @@ class ProfileRepositoryImpl(
     }
 
     override suspend fun getTeacherProfile(): Result<ProfileModel, DataError.Remote> {
-//        TODO
         return profileDataSource.getTeacherProfile(
             access = getAccess(),
-            username = "lkey_teacher"
+            username = getUsername()
         )
     }
 
     override suspend fun updateTeacherBio(bio: UpdateBioModel): Result<Unit, DataError.Remote> {
-        return profileDataSource.getTeacherProfile(
+        return profileDataSource.updateTeacherBio(
             access = getAccess(),
-            username = "lkey_teacher"
+            bio = bio
         )
     }
 
     private fun getAccess() : String {
         return settings.getString(
             key = Keys.ACCESS_TOKEN,
+            defaultValue = ""
+        )
+    }
+
+    private fun getUsername() : String {
+        return settings.getString(
+            key = Keys.MY_USERNAME,
             defaultValue = ""
         )
     }

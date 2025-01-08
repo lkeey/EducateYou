@@ -8,6 +8,7 @@ import dev.lkeeeey.edu.core.domain.onError
 import dev.lkeeeey.edu.core.domain.onSuccess
 import dev.lkeeeey.edu.you.auth.domain.AuthRepository
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
+import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -36,6 +37,7 @@ class ProfileViewModel (
 
                 settings.putString(Keys.LOGIN, "")
                 settings.putString(Keys.PASSWORD, "")
+                settings.putString(Keys.MY_USERNAME, "")
 
                 settings.putBoolean(Keys.IS_LOGIN, false)
             }
@@ -61,9 +63,61 @@ class ProfileViewModel (
 
             ProfileEvent.OnSave -> {
 //                TODO save bio
+                updateBio()
 
 //                TODO save subject
             }
+        }
+    }
+
+    private fun updateBio() {
+        _state.update {
+            it.copy(
+                isLoading = true
+            )
+        }
+
+        viewModelScope.launch {
+            authRepository
+                .refreshToken()
+                .onSuccess {
+                    profileRepository
+                        .updateTeacherBio(
+                            bio = UpdateBioModel(
+                                text = state.value.enteredBio
+                            )
+                        )
+                        .onSuccess {
+//                            _state.update {
+//                                it.copy(
+//                                    isLoading = false,
+//                                    profile = state.value.profile.copy(
+//                                        bio = state.value.enteredBio
+//                                    )
+//                                )
+//                            }
+
+//                            TODO delete
+                            loadProfile()
+                        }
+                        .onError { error->
+                            _state.update {
+                                it.copy(
+                                    errorMessage = error.name,
+                                    isLoading = false
+                                )
+                            }
+
+                        }
+                }
+                .onError { error->
+                    _state.update {
+                        it.copy(
+                            errorMessage = error.name,
+                            isLoading = false
+                        )
+                    }
+                }
         }
     }
 
