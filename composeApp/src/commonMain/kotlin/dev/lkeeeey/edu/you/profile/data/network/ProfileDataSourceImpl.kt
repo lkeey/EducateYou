@@ -3,6 +3,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 import dev.lkeeeey.edu.core.data.safeCall
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
 import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
@@ -20,6 +21,21 @@ class ProfileDataSourceImpl (
         return safeCall<List<StudentModel>> {
             httpClient.get(
                 urlString = "$BASE_URL/schedule/student"
+            ) {
+                bearerAuth(
+                    access
+                )
+            }
+        }
+    }
+
+    override suspend fun getTeacherProfile(
+        access: String,
+        username: String
+    ): Result<ProfileModel, DataError.Remote> {
+        return safeCall<ProfileModel> {
+            httpClient.get(
+                urlString = "$BASE_URL/auth/user/$username"
             ) {
                 bearerAuth(
                     access

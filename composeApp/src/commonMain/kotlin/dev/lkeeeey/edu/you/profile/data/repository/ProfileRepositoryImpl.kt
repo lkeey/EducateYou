@@ -6,6 +6,7 @@ import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
+import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
 
 class ProfileRepositoryImpl(
@@ -17,6 +18,14 @@ class ProfileRepositoryImpl(
     override suspend fun getStudents(): Result<List<StudentModel>, DataError.Remote> {
         return profileDataSource.getStudents(
             access = getAccess()
+        )
+    }
+
+    override suspend fun getTeacherProfile(): Result<ProfileModel, DataError.Remote> {
+//        TODO
+        return profileDataSource.getTeacherProfile(
+            access = getAccess(),
+            username = "lkey_teacher"
         )
     }
 
