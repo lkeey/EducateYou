@@ -69,6 +69,9 @@ kotlin {
 
             // toolbar only with material3
             implementation(compose.material3)
+
+            //load images
+            implementation(libs.coil.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.components.ErrorMessage
 import dev.lkeeeey.edu.you.profile.presentation.components.Reference
@@ -98,6 +99,16 @@ fun ProfileView(
                     .align(Alignment.CenterHorizontally)
                     .clip(CircleShape),
                 painter = painterResource(Res.drawable.profile),
+                contentDescription = "logo",
+                contentScale = ContentScale.Crop
+            )
+
+            AsyncImage(
+                modifier = Modifier
+                    .size(95.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .clip(CircleShape),
+                model = state.profile.profileLogoUrl,
                 contentDescription = "logo",
                 contentScale = ContentScale.Crop
             )
