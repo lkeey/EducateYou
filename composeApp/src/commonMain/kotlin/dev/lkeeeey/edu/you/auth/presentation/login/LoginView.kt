@@ -59,7 +59,8 @@ fun LoginView(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 24.dp, horizontal = 16.dp),
+                .padding(horizontal = 16.dp)
+                .systemBarsPadding(),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
