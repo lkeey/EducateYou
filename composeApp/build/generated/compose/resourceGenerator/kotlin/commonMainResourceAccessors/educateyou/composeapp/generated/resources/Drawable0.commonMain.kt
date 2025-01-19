@@ -24,6 +24,9 @@ private object CommonMainDrawable0 {
   public val ic_calendar_no_plans: DrawableResource by 
       lazy { init_ic_calendar_no_plans() }
 
+  public val ic_library: DrawableResource by 
+      lazy { init_ic_library() }
+
   public val ic_profile_btn_back: DrawableResource by 
       lazy { init_ic_profile_btn_back() }
 
@@ -50,6 +53,7 @@ internal fun _collectCommonMainDrawable0Resources(map: MutableMap<String, Drawab
   map.put("ic_authentication_opened_eye", CommonMainDrawable0.ic_authentication_opened_eye)
   map.put("ic_btn_back", CommonMainDrawable0.ic_btn_back)
   map.put("ic_calendar_no_plans", CommonMainDrawable0.ic_calendar_no_plans)
+  map.put("ic_library", CommonMainDrawable0.ic_library)
   map.put("ic_profile_btn_back", CommonMainDrawable0.ic_profile_btn_back)
   map.put("ic_profile_logout", CommonMainDrawable0.ic_profile_logout)
   map.put("ic_profile_timetable", CommonMainDrawable0.ic_profile_timetable)
@@ -114,6 +118,17 @@ private fun init_ic_calendar_no_plans(): DrawableResource =
     setOf(
       org.jetbrains.compose.resources.ResourceItem(setOf(),
     "composeResources/educateyou.composeapp.generated.resources/drawable/ic_calendar_no_plans.xml", -1, -1),
+    )
+)
+
+internal val Res.drawable.ic_library: DrawableResource
+  get() = CommonMainDrawable0.ic_library
+
+private fun init_ic_library(): DrawableResource = org.jetbrains.compose.resources.DrawableResource(
+  "drawable:ic_library",
+    setOf(
+      org.jetbrains.compose.resources.ResourceItem(setOf(),
+    "composeResources/educateyou.composeapp.generated.resources/drawable/ic_library.xml", -1, -1),
     )
 )
 

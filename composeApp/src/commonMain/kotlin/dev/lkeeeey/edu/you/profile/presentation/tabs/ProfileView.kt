@@ -45,6 +45,7 @@ import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileEvent
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileState
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.Thin
+import educateyou.composeapp.generated.resources.ic_library
 import educateyou.composeapp.generated.resources.ic_profile_logout
 import educateyou.composeapp.generated.resources.ic_profile_timetable
 import educateyou.composeapp.generated.resources.ic_profile_win
@@ -103,15 +104,15 @@ fun ProfileView(
                 contentScale = ContentScale.Crop
             )
 
-            AsyncImage(
-                modifier = Modifier
-                    .size(95.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .clip(CircleShape),
-                model = state.profile.profileLogoUrl,
-                contentDescription = "logo",
-                contentScale = ContentScale.Crop
-            )
+//            AsyncImage(
+//                modifier = Modifier
+//                    .size(95.dp)
+//                    .align(Alignment.CenterHorizontally)
+//                    .clip(CircleShape),
+//                model = "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-playful-kitten-kitty-cute-cat-smile-png-image_10263743.png",
+//                contentDescription = "logo",
+//                contentScale = ContentScale.Crop
+//            )
 
             Spacer(modifier = Modifier.height(12.dp))
 
@@ -185,6 +186,15 @@ fun ProfileView(
                 icon = Res.drawable.ic_profile_timetable,
                 title = "Расписание",
                 content = "Уроки с учениками",
+                isVisible = true
+            ) {
+//                onOpenScreen(ProfileAction.OnOpenTimeTable)
+            }
+
+            Reference(
+                icon = Res.drawable.ic_library,
+                title = "Материалы",
+                content = "Теория и задачи",
                 isVisible = true
             ) {
 //                onOpenScreen(ProfileAction.OnOpenTimeTable)

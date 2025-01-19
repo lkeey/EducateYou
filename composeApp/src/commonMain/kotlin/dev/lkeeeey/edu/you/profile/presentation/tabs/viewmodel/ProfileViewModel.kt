@@ -62,7 +62,6 @@ class ProfileViewModel (
             }
 
             ProfileEvent.OnSave -> {
-//                TODO save bio
                 updateBio()
 
 //                TODO save subject
