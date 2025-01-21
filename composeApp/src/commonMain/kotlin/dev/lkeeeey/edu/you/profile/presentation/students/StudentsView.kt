@@ -39,11 +39,11 @@ fun StudentsView (
         }
 
         if (state.students.isNotEmpty()) {
-            state.students.forEachIndexed { index, student ->
+            state.students.forEachIndexed { _, student ->
                 StudentCard(
                     studentModel = student
                 ) {
-                    onOpen(StudentsAction.OnOpenStudentDetails)
+                    onEvent(StudentsEvent.OnStudentClick(username = student.name))
                 }
             }
         }

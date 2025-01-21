@@ -25,7 +25,7 @@ fun StudentsScreen(
         onOpen = {
             when (it) {
                 StudentsAction.OnOpenStudentDetails -> {
-                    // TODO navigate
+
                 }
 
                 StudentsAction.OnBackScreen -> {

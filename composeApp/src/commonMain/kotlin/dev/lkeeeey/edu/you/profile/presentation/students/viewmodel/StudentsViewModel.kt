@@ -28,8 +28,12 @@ class StudentsViewModel (
         event: StudentsEvent
     ) {
         when (event) {
-            StudentsEvent.OnStudentClick -> {
-
+            is StudentsEvent.OnStudentClick -> {
+                _state.update {
+                    it.copy(
+                        chosenStudentUsername = event.username
+                    )
+                }
             }
 
             StudentsEvent.OnLoadStudents -> {

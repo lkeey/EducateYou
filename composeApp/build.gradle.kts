@@ -72,6 +72,9 @@ kotlin {
 
             //load images
             implementation(libs.coil.compose)
+
+            // datepicker
+            implementation(libs.kmp.date.time.picker)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
