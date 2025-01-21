@@ -9,6 +9,7 @@ import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
+import dev.lkeeeey.edu.you.profile.domain.models.SubjectPresModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 
 class ProfileRepositoryImpl(
@@ -20,6 +21,13 @@ class ProfileRepositoryImpl(
     override suspend fun getStudents(): Result<List<StudentModel>, DataError.Remote> {
         return profileDataSource.getStudents(
             access = getAccess()
+        )
+    }
+
+    override suspend fun getStudentSubjects(studentUsername: String): Result<List<SubjectPresModel>, DataError.Remote> {
+        return profileDataSource.getStudentSubjects(
+            access = getAccess(),
+            username = studentUsername
         )
     }
 

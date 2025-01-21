@@ -6,6 +6,7 @@ import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
+import dev.lkeeeey.edu.you.profile.domain.models.SubjectPresModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
@@ -24,6 +25,21 @@ class ProfileDataSourceImpl (
         return safeCall<List<StudentModel>> {
             httpClient.get(
                 urlString = "$BASE_URL/schedule/student"
+            ) {
+                bearerAuth(
+                    access
+                )
+            }
+        }
+    }
+
+    override suspend fun getStudentSubjects(
+        access: String,
+        username: String
+    ): Result<List<SubjectPresModel>, DataError.Remote> {
+        return safeCall<List<SubjectPresModel>> {
+            httpClient.get(
+                urlString = "$BASE_URL/schedule/subject/$username"
             ) {
                 bearerAuth(
                     access

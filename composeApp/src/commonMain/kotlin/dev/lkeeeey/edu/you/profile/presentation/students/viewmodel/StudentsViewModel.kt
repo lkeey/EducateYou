@@ -32,7 +32,8 @@ class StudentsViewModel (
             is StudentsEvent.OnStudentClick -> {
                 _state.update {
                     it.copy(
-                        chosenStudentUsername = event.username
+                        chosenStudentUsername = event.username,
+                        isLoading = true,
                     )
                 }
 
@@ -127,7 +128,41 @@ class StudentsViewModel (
     }
 
     private fun loadSubjects() {
-        TODO("Not yet implemented")
+        viewModelScope.launch {
+            authRepository.refreshToken()
+                .onSuccess { res ->
+                    authRepository.updateAccessToken(res.access)
+
+                    profileRepository
+                        .getStudentSubjects(
+                            studentUsername = state.value.chosenStudentUsername
+                        )
+                        .onSuccess { s ->
+                            _state.update {
+                                it.copy(
+                                    isLoading = false,
+                                    loadedSubjectsPres = s
+                                )
+                            }
+                        }
+                        .onError { e ->
+                            _state.update {
+                                it.copy(
+                                    isLoading = false,
+                                    errorMessage = e.name,
+                                )
+                            }
+                        }
+                }
+                .onError { e ->
+                    _state.update {
+                        it.copy(
+                            isLoading = false,
+                            errorMessage = e.name,
+                        )
+                    }
+                }
+        }
     }
 
     private fun loadStudents() {
