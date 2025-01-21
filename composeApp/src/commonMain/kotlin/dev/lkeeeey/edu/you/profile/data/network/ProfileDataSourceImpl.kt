@@ -3,6 +3,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 import dev.lkeeeey.edu.core.data.safeCall
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
@@ -10,6 +11,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
 import io.ktor.client.request.get
 import io.ktor.client.request.patch
+import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 
 private const val BASE_URL = "https://me-educate.ru/api"
@@ -58,6 +60,25 @@ class ProfileDataSourceImpl (
                 )
                 bearerAuth(
                     access
+                )
+            }
+        }
+    }
+
+    override suspend fun createDistributedTask(
+        access: String,
+        username: String,
+        task: CreateTaskModel
+    ): Result<CreateTaskModel, DataError.Remote> {
+        return safeCall<CreateTaskModel> {
+            httpClient.post(
+                urlString = "$BASE_URL/schedule/homework/$username"
+            ) {
+                bearerAuth(
+                    access
+                )
+                setBody(
+                    task
                 )
             }
         }

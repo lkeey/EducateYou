@@ -6,6 +6,7 @@ import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
+import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
@@ -33,6 +34,14 @@ class ProfileRepositoryImpl(
         return profileDataSource.updateTeacherBio(
             access = getAccess(),
             bio = bio
+        )
+    }
+
+    override suspend fun createDistributedTask(task: CreateTaskModel, username: String): Result<CreateTaskModel, DataError.Remote> {
+        return profileDataSource.createDistributedTask(
+            username = username,
+            access = getAccess(),
+            task = task
         )
     }
 

@@ -2,6 +2,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
@@ -20,4 +21,12 @@ interface ProfileDataSource {
         access: String,
         bio: UpdateBioModel
     ) : Result<Unit, DataError.Remote>
+
+    suspend fun createDistributedTask(
+        access: String,
+        username: String,
+        task: CreateTaskModel
+    ) : Result<CreateTaskModel, DataError.Remote>
+
+
 }
