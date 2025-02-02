@@ -1,4 +1,6 @@
-# EducateMe&You
+# EducateYou
+
+[![CodeFactor](https://www.codefactor.io/repository/github/lkeey/educateyou/badge)](https://www.codefactor.io/repository/github/lkeey/educateyou)
 
 ### **Technologies**
 
