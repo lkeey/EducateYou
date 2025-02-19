@@ -172,6 +172,20 @@ fun App() {
                     }
 
                     // TODO students detail
+
+                    composable<Route.Students>(
+                        exitTransition = { slideOutHorizontally() },
+                        popEnterTransition = { slideInHorizontally() }
+                    ) {
+//                        Create Tasks Screen
+                        val viewModel = koinViewModel<StudentsViewModel>()
+
+                        StudentsScreen(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    }
+
                 }
             }
         }

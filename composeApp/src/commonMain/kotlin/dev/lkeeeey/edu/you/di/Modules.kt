@@ -15,6 +15,7 @@ import dev.lkeeeey.edu.you.profile.data.repository.ProfileRepositoryImpl
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
+import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksViewModel
 import org.koin.core.module.Module
 import org.koin.core.module.dsl.singleOf
 import org.koin.core.module.dsl.viewModelOf
@@ -30,6 +31,7 @@ val sharedModule = module {
     viewModelOf(::CalendarViewModel)
     viewModelOf(::ProfileViewModel)
     viewModelOf(::StudentsViewModel)
+    viewModelOf(::TasksViewModel)
 
     single { HttpClientFactory.create(get()) }
 

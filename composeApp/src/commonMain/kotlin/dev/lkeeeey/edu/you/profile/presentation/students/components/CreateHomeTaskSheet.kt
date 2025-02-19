@@ -104,6 +104,21 @@ fun CreateHomeTaskSheet (
 
                 Spacer(modifier = Modifier.height(16.dp))
 
+                androidx.compose.material.Text(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    text = "Задание для ${state.chosenStudentUsername}",
+                    style = TextStyle(
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily(Font(Res.font.Thin)),
+                        fontWeight = FontWeight(600),
+                        color = Theme.colors.blackProfile,
+                        textAlign = TextAlign.Center
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 OutlinedText(
                     previousData = state.enteredContent,
                     label = "Описание",
