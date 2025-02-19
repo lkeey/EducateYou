@@ -20,6 +20,9 @@ fun TasksScreen (
         onEvent = {
             viewModel.onEvent(it)
         },
+        onOpenBack = {
+            navController.popBackStack()
+        }
     )
 
 }

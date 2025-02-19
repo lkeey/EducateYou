@@ -175,7 +175,7 @@ fun App() {
 
                     // TODO students detail
 
-                    composable<Route.Students>(
+                    composable<Route.CreateTasks>(
                         exitTransition = { slideOutHorizontally() },
                         popEnterTransition = { slideInHorizontally() }
                     ) {

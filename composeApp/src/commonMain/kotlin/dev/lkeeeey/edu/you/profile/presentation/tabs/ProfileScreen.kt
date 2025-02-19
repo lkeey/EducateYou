@@ -36,6 +36,10 @@ fun ProfileScreen(
                 ProfileAction.OnBackScreen -> {
                     navController.popBackStack()
                 }
+
+                ProfileAction.OnOpenCreatingTasks -> {
+                    navController.navigate(Route.CreateTasks)
+                }
             }
         }
     )

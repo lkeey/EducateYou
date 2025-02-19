@@ -197,7 +197,7 @@ fun ProfileView(
                 content = "Теория и задачи",
                 isVisible = true
             ) {
-//                onOpenScreen(ProfileAction.OnOpenTimeTable)
+                onOpenScreen(ProfileAction.OnOpenCreatingTasks)
             }
 
 

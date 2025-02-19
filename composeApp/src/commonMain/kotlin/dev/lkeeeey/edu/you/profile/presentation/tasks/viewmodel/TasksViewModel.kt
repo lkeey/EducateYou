@@ -53,15 +53,22 @@ class TasksViewModel (
                 _state.update {
                     it.copy(
                         enteredBlock = state.value.enteredBlock.copy(
-                            subject = event.title
+                            title = event.title
                         )
                     )
                 }
             }
-            is TasksEvent.OnUpdateTask -> {
+
+            TasksEvent.OnSave -> {
+                println("save - ${state.value.enteredBlock}")
+            }
+
+            is TasksEvent.OnUpdateTaskAnswer -> {
                 val tasks = state.value.enteredBlock.tasks.toMutableList()
 
-                tasks[event.index] = event.task
+                tasks[event.index] = tasks[event.index].copy(
+                    answer = event.answer
+                )
 
                 val block = state.value.enteredBlock.copy(
                     tasks = tasks
@@ -73,9 +80,22 @@ class TasksViewModel (
                     )
                 }
             }
+            is TasksEvent.OnUpdateTaskContent -> {
+                val tasks = state.value.enteredBlock.tasks.toMutableList()
 
-            TasksEvent.OnSave -> {
-                println("save - ${state.value.enteredBlock}")
+                tasks[event.index] = tasks[event.index].copy(
+                    content = event.content
+                )
+
+                val block = state.value.enteredBlock.copy(
+                    tasks = tasks
+                )
+
+                _state.update {
+                    it.copy(
+                        enteredBlock = block
+                    )
+                }
             }
         }
     }
