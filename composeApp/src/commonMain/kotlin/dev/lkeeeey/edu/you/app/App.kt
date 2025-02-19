@@ -29,6 +29,8 @@ import dev.lkeeeey.edu.you.profile.presentation.students.StudentsScreen
 import dev.lkeeeey.edu.you.profile.presentation.students.viewmodel.StudentsViewModel
 import dev.lkeeeey.edu.you.profile.presentation.tabs.ProfileScreen
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
+import dev.lkeeeey.edu.you.profile.presentation.tasks.TasksScreen
+import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -178,9 +180,9 @@ fun App() {
                         popEnterTransition = { slideInHorizontally() }
                     ) {
 //                        Create Tasks Screen
-                        val viewModel = koinViewModel<StudentsViewModel>()
+                        val viewModel = koinViewModel<TasksViewModel>()
 
-                        StudentsScreen(
+                        TasksScreen(
                             viewModel = viewModel,
                             navController = navController
                         )
