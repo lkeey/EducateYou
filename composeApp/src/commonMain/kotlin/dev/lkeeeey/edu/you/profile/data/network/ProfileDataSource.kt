@@ -2,6 +2,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
@@ -34,5 +35,9 @@ interface ProfileDataSource {
         task: CreateTaskModel
     ) : Result<CreateTaskModel, DataError.Remote>
 
+    suspend fun createBlockOfTasks(
+        access: String,
+        block: CreateBlockModel,
+    ): Result<CreateBlockModel, DataError.Remote>
 
 }

@@ -6,6 +6,7 @@ import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
 import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
+import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
 import dev.lkeeeey.edu.you.profile.domain.models.StudentModel
@@ -50,6 +51,13 @@ class ProfileRepositoryImpl(
             username = username,
             access = getAccess(),
             task = task
+        )
+    }
+
+    override suspend fun createBlockOfTasks(block: CreateBlockModel): Result<CreateBlockModel, DataError.Remote> {
+        return profileDataSource.createBlockOfTasks(
+            access = getAccess(),
+            block = block
         )
     }
 
