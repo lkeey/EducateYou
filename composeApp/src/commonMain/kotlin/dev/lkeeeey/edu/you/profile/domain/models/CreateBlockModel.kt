@@ -7,6 +7,5 @@ import kotlinx.serialization.Serializable
 data class CreateBlockModel (
     @SerialName("subject") val subject: String = "",
     @SerialName("title") val title: String = "",
-    @SerialName("tasks") val tasks: String,
-    @SerialName("execution_time") val executionTime: Int,
+    @SerialName("tasks") val tasks: List<CreateBlockTaskModel> = emptyList(),
 )
