@@ -122,7 +122,7 @@ class ProfileDataSourceImpl (
 
     override suspend fun getTimetable(access: String): Result<List<LessonModel>, DataError.Remote> {
         return safeCall<List<LessonModel>> {
-            httpClient.post(
+            httpClient.get(
                 urlString = "$BASE_URL/schedule"
             ) {
                 bearerAuth(

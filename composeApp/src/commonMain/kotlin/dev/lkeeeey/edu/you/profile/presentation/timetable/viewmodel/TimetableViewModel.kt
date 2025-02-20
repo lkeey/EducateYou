@@ -18,6 +18,10 @@ class TimetableViewModel (
     )
 
     fun onEvent(event: TimetableEvent) {
-        when (event)
+        when (event) {
+            TimetableEvent.OnAddLesson -> TODO()
+            is TimetableEvent.OnChangeDay -> TODO()
+            TimetableEvent.OnSaveDay -> TODO()
+        }
     }
 }

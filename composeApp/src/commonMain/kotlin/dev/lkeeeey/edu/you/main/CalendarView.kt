@@ -33,6 +33,7 @@ import dev.lkeeeey.edu.you.main.components.MonthText
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarAction
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarEvent
 import dev.lkeeeey.edu.you.main.viewmodel.CalendarState
+import dev.lkeeeey.edu.you.main.viewmodel.ScheduledLesson
 import educateyou.composeapp.generated.resources.Res
 import educateyou.composeapp.generated.resources.ic_calendar_no_plans
 import educateyou.composeapp.generated.resources.profile
@@ -118,14 +119,14 @@ fun CalendarView (
             ) {
                 Spacer(Modifier.height(32.dp))
 
-                if (state.lessons.isEmpty()) {
+                if (state.lessons.filter { it.weekday == state.selectedDate.dayOfWeek.ordinal }.isEmpty()) {
                     ImageWithText (
                         drawable = Res.drawable.ic_calendar_no_plans,
                         text = "Здесь пусто. Можно и отдохнуть"
                     )
                 } else {
-                    state.lessons.forEach {
-                        ScheduledLesson()
+                    state.lessons.filter { it.weekday == state.selectedDate.dayOfWeek.ordinal }.sortedBy { it.start }.forEach {
+                        ScheduledLesson(it)
                     }
                 }
 
