@@ -3,6 +3,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 import dev.lkeeeey.edu.core.data.safeCall
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.main.domain.LessonModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
@@ -114,6 +115,18 @@ class ProfileDataSourceImpl (
                 )
                 setBody(
                     block
+                )
+            }
+        }
+    }
+
+    override suspend fun getTimetable(access: String): Result<List<LessonModel>, DataError.Remote> {
+        return safeCall<List<LessonModel>> {
+            httpClient.post(
+                urlString = "$BASE_URL/schedule"
+            ) {
+                bearerAuth(
+                    access
                 )
             }
         }

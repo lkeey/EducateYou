@@ -2,6 +2,7 @@ package dev.lkeeeey.edu.you.profile.domain
 
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.main.domain.LessonModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
 import dev.lkeeeey.edu.you.profile.domain.models.ProfileModel
@@ -30,4 +31,7 @@ interface ProfileRepository {
     suspend fun createBlockOfTasks(
         block: CreateBlockModel,
     ): Result<CreateBlockModel, DataError.Remote>
+
+    suspend fun getTimetable(): Result<List<LessonModel>, DataError.Remote>
+
 }

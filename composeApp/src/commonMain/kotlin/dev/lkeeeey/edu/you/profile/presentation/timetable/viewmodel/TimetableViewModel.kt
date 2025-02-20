@@ -16,4 +16,8 @@ class TimetableViewModel (
         SharingStarted.WhileSubscribed(5000L),
         _state.value
     )
+
+    fun onEvent(event: TimetableEvent) {
+        when (event)
+    }
 }

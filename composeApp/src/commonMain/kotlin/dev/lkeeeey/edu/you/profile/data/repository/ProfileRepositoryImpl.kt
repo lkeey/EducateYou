@@ -4,6 +4,7 @@ import com.russhwolf.settings.Settings
 import dev.lkeeeey.edu.auth.data.keys.Keys
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.main.domain.LessonModel
 import dev.lkeeeey.edu.you.profile.data.network.ProfileDataSource
 import dev.lkeeeey.edu.you.profile.domain.ProfileRepository
 import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
@@ -58,6 +59,12 @@ class ProfileRepositoryImpl(
         return profileDataSource.createBlockOfTasks(
             access = getAccess(),
             block = block
+        )
+    }
+
+    override suspend fun getTimetable(): Result<List<LessonModel>, DataError.Remote> {
+        return profileDataSource.getTimetable(
+            access = getAccess()
         )
     }
 

@@ -118,10 +118,17 @@ fun CalendarView (
             ) {
                 Spacer(Modifier.height(32.dp))
 
-                ImageWithText (
-                    drawable = Res.drawable.ic_calendar_no_plans,
-                    text = "Здесь пусто. Можно и отдохнуть"
-                )
+                if (state.lessons.isEmpty()) {
+                    ImageWithText (
+                        drawable = Res.drawable.ic_calendar_no_plans,
+                        text = "Здесь пусто. Можно и отдохнуть"
+                    )
+                } else {
+                    state.lessons.forEach {
+                        ScheduledLesson()
+                    }
+                }
+
 
                 Spacer(Modifier.height(32.dp))
             }

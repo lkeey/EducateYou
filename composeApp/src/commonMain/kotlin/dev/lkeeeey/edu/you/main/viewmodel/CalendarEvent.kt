@@ -4,4 +4,5 @@ import kotlinx.datetime.LocalDate
 
 sealed interface CalendarEvent {
     data class OnDayClick(val date: LocalDate) : CalendarEvent
+    data object OnLoadLessons : CalendarEvent
 }
