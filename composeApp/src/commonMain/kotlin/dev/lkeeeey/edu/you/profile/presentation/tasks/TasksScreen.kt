@@ -4,6 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import dev.lkeeeey.edu.you.app.Route
+import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksAction
+import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksEvent
 import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -24,5 +27,13 @@ fun TasksScreen (
             navController.popBackStack()
         }
     )
+
+    when (state.action) {
+        TasksAction.Nothing -> { }
+        TasksAction.OpenProfileTabs -> {
+            navController.navigate(Route.ProfileTabs)
+            viewModel.onEvent(TasksEvent.OnClearActions)
+        }
+    }
 
 }

@@ -9,11 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Create
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -22,11 +17,9 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
 import dev.lkeeeey.edu.you.auth.presentation.components.FilledBtn
 import dev.lkeeeey.edu.you.auth.presentation.components.OutlinedText
-import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
 import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksEvent
 import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksState
-import kotlinx.coroutines.launch
 
 @Composable
 fun TasksView (
@@ -76,11 +69,12 @@ fun TasksView (
             state.enteredBlock.tasks.forEachIndexed { index, createBlockTaskModel ->
                 Column (
                     modifier = Modifier
+                        .clip(shape = RoundedCornerShape(40.dp))
                         .background(White)
-                        .clip(shape = RoundedCornerShape(16.dp))
+
                 ) {
                     OutlinedText(
-                        previousData = state.enteredBlock.title,
+                        previousData = createBlockTaskModel.content,
                         label = "Содержание задачи - ${index+1}",
                     ) {
                         onEvent(TasksEvent.OnUpdateTaskContent(index = index, content = it))
@@ -89,11 +83,13 @@ fun TasksView (
                     Spacer(Modifier.height(8.dp))
 
                     OutlinedText(
-                        previousData = state.enteredBlock.title,
+                        previousData = createBlockTaskModel.answer,
                         label = "Правильный ответ для задачи - ${index+1}",
                     ) {
                         onEvent(TasksEvent.OnUpdateTaskAnswer(index = index, answer = it))
                     }
+
+                    Spacer(Modifier.height(16.dp))
                 }
             }
 
@@ -105,20 +101,12 @@ fun TasksView (
                 onEvent(TasksEvent.OnAddTask)
             }
 
-            Spacer(modifier = Modifier.weight(.1f))
+            Spacer(Modifier.height(24.dp))
 
-            // make it at the right bottom corner
-            FloatingActionButton(
-                onClick = {
-                    onEvent(TasksEvent.OnSave)
-                },
-                backgroundColor = Theme.colors.primaryBackground.copy(1f)
+            FilledBtn(
+                text = "Сохранить",
             ) {
-                Icon(
-                    tint = White,
-                    imageVector = Icons.Default.AddCircle,
-                    contentDescription = "add"
-                )
+                onEvent(TasksEvent.OnSave)
             }
         }
     }

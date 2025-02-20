@@ -188,7 +188,7 @@ fun ProfileView(
                 content = "Уроки с учениками",
                 isVisible = true
             ) {
-//                onOpenScreen(ProfileAction.OnOpenTimeTable)
+                onOpenScreen(ProfileAction.OnOpenTimetable)
             }
 
             Reference(

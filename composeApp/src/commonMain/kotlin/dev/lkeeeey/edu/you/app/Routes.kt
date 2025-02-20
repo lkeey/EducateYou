@@ -34,6 +34,8 @@ sealed interface Route {
     data object Students : Route
     @Serializable
     data object CreateTasks : Route
+    @Serializable
+    data object Timetable : Route
     //    end profile routes
 
 }
