@@ -40,6 +40,10 @@ fun ProfileScreen(
                 ProfileAction.OnOpenCreatingTasks -> {
                     navController.navigate(Route.CreateTasks)
                 }
+
+                ProfileAction.OnOpenTimetable -> {
+                    navController.navigate(Route.Timetable)
+                }
             }
         }
     )

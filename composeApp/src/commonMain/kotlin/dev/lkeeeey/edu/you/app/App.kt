@@ -31,6 +31,8 @@ import dev.lkeeeey.edu.you.profile.presentation.tabs.ProfileScreen
 import dev.lkeeeey.edu.you.profile.presentation.tabs.viewmodel.ProfileViewModel
 import dev.lkeeeey.edu.you.profile.presentation.tasks.TasksScreen
 import dev.lkeeeey.edu.you.profile.presentation.tasks.viewmodel.TasksViewModel
+import dev.lkeeeey.edu.you.profile.presentation.timetable.TimetableScreen
+import dev.lkeeeey.edu.you.profile.presentation.timetable.viewmodel.TimetableViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -188,6 +190,18 @@ fun App() {
                         )
                     }
 
+                    composable<Route.Timetable>(
+                        exitTransition = { slideOutHorizontally() },
+                        popEnterTransition = { slideInHorizontally() }
+                    ) {
+//                        Timetable Screen
+                        val viewModel = koinViewModel<TimetableViewModel>()
+
+                        TimetableScreen(
+                            viewModel = viewModel,
+                            navController = navController
+                        )
+                    }
                 }
             }
         }
