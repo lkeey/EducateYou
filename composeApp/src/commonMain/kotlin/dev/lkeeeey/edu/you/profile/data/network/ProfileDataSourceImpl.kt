@@ -3,6 +3,7 @@ package dev.lkeeeey.edu.you.profile.data.network
 import dev.lkeeeey.edu.core.data.safeCall
 import dev.lkeeeey.edu.core.domain.DataError
 import dev.lkeeeey.edu.core.domain.Result
+import dev.lkeeeey.edu.you.main.domain.CreateLessonModel
 import dev.lkeeeey.edu.you.main.domain.LessonModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateBlockModel
 import dev.lkeeeey.edu.you.profile.domain.models.CreateTaskModel
@@ -12,6 +13,7 @@ import dev.lkeeeey.edu.you.profile.domain.models.SubjectPresModel
 import dev.lkeeeey.edu.you.profile.domain.models.UpdateBioModel
 import io.ktor.client.HttpClient
 import io.ktor.client.request.bearerAuth
+import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.patch
 import io.ktor.client.request.post
@@ -127,6 +129,39 @@ class ProfileDataSourceImpl (
             ) {
                 bearerAuth(
                     access
+                )
+            }
+        }
+    }
+
+    override suspend fun deleteRelatedLesson(
+        id: Int,
+        access: String
+    ): Result<Unit, DataError.Remote> {
+        return safeCall<Unit> {
+            httpClient.delete(
+                urlString = "$BASE_URL/schedule/related/$id"
+            ) {
+                bearerAuth(
+                    access
+                )
+            }
+        }
+    }
+
+    override suspend fun createRelatedLesson(
+        lesson: CreateLessonModel,
+        access: String
+    ): Result<CreateLessonModel, DataError.Remote> {
+        return safeCall<CreateLessonModel> {
+            httpClient.post(
+                urlString = "$BASE_URL/schedule/related"
+            ) {
+                bearerAuth(
+                    access
+                )
+                setBody(
+                    lesson
                 )
             }
         }
