@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.lkeeeey.edu.you.auth.presentation.components.OutlinedText
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
 import dev.lkeeeey.edu.you.profile.presentation.students.components.ReadOnlyDropDown
@@ -127,6 +129,41 @@ fun TimetableView (
             }
         }
 
+        Spacer(modifier = Modifier.height(16.dp))
+
+
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 32.dp),
+            shape = RoundedCornerShape(size = 32.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Theme.colors.primaryBackground.copy(alpha = 1f),
+            ),
+            onClick = {
+                onEvent(TimetableEvent.OnSaveLesson)
+            }
+        ) {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                text = "Сохранить",
+                style = TextStyle(
+                    fontSize = 20.sp,
+                    fontFamily = FontFamily(Font(Res.font.Thin)),
+                    fontWeight = FontWeight(600),
+                    color = White,
+                    textAlign = TextAlign.Center
+                )
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -145,40 +182,12 @@ fun TimetableView (
         ) {
 
             if (state.lessons.filter { it.weekday == state.weekDay }.isNotEmpty()) {
-                state.lessons.filter { it.weekday == state.weekDay }.forEachIndexed { index, lesson ->
-
-                    Text(
-                        text = lesson.user.name,
-                        modifier = Modifier
-                            .fillMaxSize(),
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontFamily = FontFamily(Font(Res.font.Thin)),
-                            fontWeight = FontWeight(400),
-                            color = Theme.colors.secondaryBorder,
-                            letterSpacing = 0.3.sp,
-                        ),
-                        textAlign = TextAlign.Center,
-
-                        )
-
-//                    ReadOnlyDropDown(
-//                        options = state.subjectIds,
-//                        previousData = subjectSchedule.name.name,
-//                        label = "${index + 1}-й предмет"
-//                    ) { subj ->
-//
-////                        id previous - to delete
-////                        start and end time, weekday, subjectID - to create
-//
-//                        onEvent(
-//                            TimeTableEvent.OnSubjectUpdate(
-//                                deletedSubject = subjectSchedule.id,
-//                                subjectNew = subj,
-//                                subjectNum = index
-//                            )
-//                        )
-//                    }
+                state.lessons.filter { it.weekday == state.weekDay }.sortedBy { it.start }.forEachIndexed { index, lesson ->
+                    LessonPreview(
+                        lesson = lesson
+                    ) {
+                        onEvent(TimetableEvent.OnDeleteLesson(lesson.id))
+                    }
                 }
             } else {
                 Text(
@@ -197,35 +206,7 @@ fun TimetableView (
                     )
             }
 
-
             Spacer(modifier = Modifier.weight(.1f))
-
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 32.dp),
-                shape = RoundedCornerShape(size = 32.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Theme.colors.primaryBackground.copy(alpha = 1f),
-                ),
-                onClick = {
-                    onEvent(TimetableEvent.OnSaveLesson)
-                }
-            ) {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    text = "Сохранить",
-                    style = TextStyle(
-                        fontSize = 20.sp,
-                        fontFamily = FontFamily(Font(Res.font.Thin)),
-                        fontWeight = FontWeight(600),
-                        color = White,
-                        textAlign = TextAlign.Center
-                    )
-                )
-            }
         }
 
         Spacer(modifier = Modifier.weight(.1f))

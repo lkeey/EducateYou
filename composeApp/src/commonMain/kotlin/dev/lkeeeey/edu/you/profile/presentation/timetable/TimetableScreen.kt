@@ -28,5 +28,6 @@ fun TimetableScreen(
 
     LaunchedEffect(true ) {
         viewModel.onEvent(TimetableEvent.OnLoadLessons)
+        viewModel.onEvent(TimetableEvent.OnLoadStudents)
     }
 }

@@ -8,5 +8,6 @@ sealed interface TimetableEvent {
     ): TimetableEvent
 
     data object OnLoadLessons: TimetableEvent
+    data object OnLoadStudents: TimetableEvent
     data object OnSaveLesson : TimetableEvent
 }

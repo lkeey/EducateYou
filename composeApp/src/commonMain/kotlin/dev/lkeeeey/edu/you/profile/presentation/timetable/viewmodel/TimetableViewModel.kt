@@ -42,6 +42,10 @@ class TimetableViewModel (
             TimetableEvent.OnLoadLessons -> {
                 loadLessons()
             }
+
+            TimetableEvent.OnLoadStudents -> {
+                loadStudents()
+            }
         }
     }
 
@@ -172,6 +176,49 @@ class TimetableViewModel (
                     }
                 }
 
+        }
+    }
+
+    private fun loadStudents() {
+        _state.update {
+            it.copy(
+                isLoading = true
+            )
+        }
+
+        viewModelScope.launch {
+            authRepository
+                .refreshToken()
+                .onSuccess { res->
+                    authRepository.updateAccessToken(res.access)
+
+                    profileRepository
+                        .getStudents()
+                        .onSuccess { students->
+                            _state.update {
+                                it.copy(
+                                    isLoading = false,
+                                    students = students
+                                )
+                            }
+                        }
+                        .onError { error ->
+                            _state.update {
+                                it.copy(
+                                    error = error.name,
+                                    isLoading = false
+                                )
+                            }
+                        }
+                }
+                .onError { error ->
+                    _state.update {
+                        it.copy(
+                            error = error.name,
+                            isLoading = false
+                        )
+                    }
+                }
         }
     }
 }
