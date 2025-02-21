@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -54,7 +55,7 @@ fun TimetableView (
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .systemBarsPadding()
+            .blur(if (state.isLoading) 4.dp else 0.dp)
     ) {
 
         BackBtn(
@@ -130,66 +131,71 @@ fun TimetableView (
             }
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        StringDropDown(
-            options = state.students.map { it.name },
-            previousData = state.enteredLesson.student,
-            label = "Ученик",
-        ) {
-            onEvent(TimetableEvent.OnUpdateEnteredStudent(it))
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        StringDropDown(
-            options = times,
-            previousData = state.enteredLesson.start,
-            label = "Начало",
-        ) {
-            onEvent(TimetableEvent.OnUpdateStart(it))
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        StringDropDown(
-            options = times,
-            previousData = state.enteredLesson.end,
-            label = "Конец",
-        ) {
-            onEvent(TimetableEvent.OnUpdateEnd(it))
-        }
-
-        Spacer(modifier = Modifier.height(4.dp))
-
-        Button(
+        Column (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 32.dp),
-            shape = RoundedCornerShape(size = 32.dp),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Theme.colors.primaryBackground.copy(alpha = 1f),
-            ),
-            onClick = {
-                onEvent(TimetableEvent.OnSaveLesson)
-            }
+                .padding(horizontal = 16.dp)
         ) {
-            Text(
+            Spacer(modifier = Modifier.height(16.dp))
+
+            StringDropDown(
+                options = state.students.map { it.name },
+                previousData = state.enteredLesson.student,
+                label = "Ученик",
+            ) {
+                onEvent(TimetableEvent.OnUpdateEnteredStudent(it))
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            StringDropDown(
+                options = times,
+                previousData = state.enteredLesson.start,
+                label = "Начало",
+            ) {
+                onEvent(TimetableEvent.OnUpdateStart(it))
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            StringDropDown(
+                options = times,
+                previousData = state.enteredLesson.end,
+                label = "Конец",
+            ) {
+                onEvent(TimetableEvent.OnUpdateEnd(it))
+            }
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Button(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                text = "Сохранить",
-                style = TextStyle(
-                    fontSize = 20.sp,
-                    fontFamily = FontFamily(Font(Res.font.Thin)),
-                    fontWeight = FontWeight(600),
-                    color = White,
-                    textAlign = TextAlign.Center
+                    .padding(horizontal = 32.dp),
+                shape = RoundedCornerShape(size = 32.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Theme.colors.primaryBackground.copy(alpha = 1f),
+                ),
+                onClick = {
+                    onEvent(TimetableEvent.OnSaveLesson)
+                },
+                enabled = state.enteredLesson.student.isNotEmpty() && state.enteredLesson.start.isNotEmpty() && state.enteredLesson.end.isNotEmpty()
+            ) {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    text = "Сохранить",
+                    style = TextStyle(
+                        fontSize = 20.sp,
+                        fontFamily = FontFamily(Font(Res.font.Thin)),
+                        fontWeight = FontWeight(600),
+                        color = White,
+                        textAlign = TextAlign.Center
+                    )
                 )
-            )
+            }
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
 
         Column(
             modifier = Modifier

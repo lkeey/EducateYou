@@ -19,7 +19,9 @@ sealed interface TimetableEvent {
         val end : String,
     ): TimetableEvent
 
+    data object OnSaveLesson : TimetableEvent
+
     data object OnLoadLessons: TimetableEvent
     data object OnLoadStudents: TimetableEvent
-    data object OnSaveLesson : TimetableEvent
+
 }

@@ -27,6 +27,16 @@ class TimetableViewModel (
     fun onEvent(event: TimetableEvent) {
         when (event) {
             TimetableEvent.OnSaveLesson -> {
+                _state.update {
+                    it.copy(
+                        enteredLesson = state.value.enteredLesson.copy(
+                            weekday = state.value.weekDay
+                        )
+                    )
+                }
+
+                println("lesson - ${state.value.enteredLesson}")
+
                 saveLesson(lesson = state.value.enteredLesson)
             }
             is TimetableEvent.OnChangeDay -> {
@@ -46,6 +56,28 @@ class TimetableViewModel (
             TimetableEvent.OnLoadStudents -> {
                 loadStudents()
             }
+
+            is TimetableEvent.OnUpdateEnd -> {
+                _state.update {
+                    it.copy(
+                        enteredLesson = state.value.enteredLesson.copy(end = event.end)
+                    )
+                }
+            }
+            is TimetableEvent.OnUpdateEnteredStudent -> {
+                _state.update {
+                    it.copy(
+                        enteredLesson = state.value.enteredLesson.copy(student = event.student)
+                    )
+                }
+            }
+            is TimetableEvent.OnUpdateStart -> {
+                _state.update {
+                    it.copy(
+                        enteredLesson = state.value.enteredLesson.copy(start = event.start)
+                    )
+                }
+            }
         }
     }
 
@@ -64,12 +96,6 @@ class TimetableViewModel (
                     profileRepository
                         .createRelatedLesson(lesson = lesson)
                         .onSuccess {
-                            _state.update {
-                                it.copy(
-                                    enteredLesson = CreateLessonModel()
-                                )
-                            }
-
                             loadLessons()
                         }
                         .onError { e ->
@@ -109,11 +135,7 @@ class TimetableViewModel (
                     profileRepository
                         .deleteRelatedLesson(id = id)
                         .onSuccess {
-                            _state.update {
-                                it.copy(
-                                    isLoading = false,
-                                )
-                            }
+                            loadLessons()
                         }
                         .onError { e ->
                             _state.update {
