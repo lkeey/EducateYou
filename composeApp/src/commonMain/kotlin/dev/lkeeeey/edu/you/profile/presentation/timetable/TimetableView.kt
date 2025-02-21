@@ -33,10 +33,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import dev.lkeeeey.edu.you.auth.presentation.components.OutlinedText
 import dev.lkeeeey.edu.you.core.presentation.Theme
 import dev.lkeeeey.edu.you.profile.presentation.students.components.BackBtn
-import dev.lkeeeey.edu.you.profile.presentation.students.components.ReadOnlyDropDown
 import dev.lkeeeey.edu.you.profile.presentation.timetable.viewmodel.TimetableEvent
 import dev.lkeeeey.edu.you.profile.presentation.timetable.viewmodel.TimetableState
 import educateyou.composeapp.generated.resources.Bold
@@ -50,6 +48,9 @@ fun TimetableView (
     onEvent: (TimetableEvent) -> Unit,
     onOpenBack: () -> Unit
 ) {
+
+    val times = listOf("10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00")
+
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -131,7 +132,33 @@ fun TimetableView (
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        StringDropDown(
+            options = state.students.map { it.name },
+            previousData = state.enteredLesson.student,
+            label = "Ученик",
+        ) {
+            onEvent(TimetableEvent.OnUpdateEnteredStudent(it))
+        }
 
+        Spacer(modifier = Modifier.height(4.dp))
+
+        StringDropDown(
+            options = times,
+            previousData = state.enteredLesson.start,
+            label = "Начало",
+        ) {
+            onEvent(TimetableEvent.OnUpdateStart(it))
+        }
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        StringDropDown(
+            options = times,
+            previousData = state.enteredLesson.end,
+            label = "Конец",
+        ) {
+            onEvent(TimetableEvent.OnUpdateEnd(it))
+        }
 
         Spacer(modifier = Modifier.height(4.dp))
 

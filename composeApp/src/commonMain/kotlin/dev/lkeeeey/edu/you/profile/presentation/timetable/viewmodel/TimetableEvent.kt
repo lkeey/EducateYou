@@ -7,6 +7,18 @@ sealed interface TimetableEvent {
         val deletedLessonId : Int,
     ): TimetableEvent
 
+    data class OnUpdateEnteredStudent(
+        val student : String,
+    ): TimetableEvent
+
+    data class OnUpdateStart(
+        val start : String,
+    ): TimetableEvent
+
+    data class OnUpdateEnd(
+        val end : String,
+    ): TimetableEvent
+
     data object OnLoadLessons: TimetableEvent
     data object OnLoadStudents: TimetableEvent
     data object OnSaveLesson : TimetableEvent
