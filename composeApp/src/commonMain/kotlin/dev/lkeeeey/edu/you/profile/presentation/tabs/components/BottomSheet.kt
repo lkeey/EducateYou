@@ -98,7 +98,7 @@ fun BottomSheet (
                 Spacer(modifier = Modifier.height(24.dp))
 
                 OutlinedText(
-                    previousData = state.profile.profileLogoUrl,
+                    previousData = "",
                     label = "Предмет",
                 ) {
                     onEvent(ProfileEvent.OnSubjectUpdated(it))

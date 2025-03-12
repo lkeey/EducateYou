@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -94,25 +95,16 @@ fun ProfileView(
                 ErrorMessage(state.errorMessage)
             }
 
-            Image(
+            AsyncImage(
+                model = "https://storage.yandexcloud.net/me-educate/avatar/${state.profile.logo}.webp",
+                contentDescription = "image",
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(95.dp)
-                    .align(Alignment.CenterHorizontally)
+                    .height(200.dp)
+                    .width(200.dp)
                     .clip(CircleShape),
-                painter = painterResource(Res.drawable.profile),
-                contentDescription = "logo",
-                contentScale = ContentScale.Crop
+                alignment = Alignment.Center
             )
-
-//            AsyncImage(
-//                modifier = Modifier
-//                    .size(95.dp)
-//                    .align(Alignment.CenterHorizontally)
-//                    .clip(CircleShape),
-//                model = "https://png.pngtree.com/png-vector/20231019/ourmid/pngtree-playful-kitten-kitty-cute-cat-smile-png-image_10263743.png",
-//                contentDescription = "logo",
-//                contentScale = ContentScale.Crop
-//            )
 
             Spacer(modifier = Modifier.height(12.dp))
 

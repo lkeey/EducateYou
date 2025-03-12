@@ -8,6 +8,5 @@ data class ProfileModel(
     @SerialName("name") val name : String,
     @SerialName("username") val username : String,
     @SerialName("bio") val bio : String,
-//    @SerialName("name") val subject : String,
-    @SerialName("avatar_url") val profileLogoUrl : String,
+    @SerialName("avatar") val logo : String,
 )
